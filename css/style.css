@@ -1,0 +1,65 @@
+#header-logo{
+    font-size: 18px
+}
+
+.mini-perfil{
+    width: 40px;
+    margin-top: 12px;
+    margin-right: 35px;
+}
+
+#dropdown1{
+   top:64px !important;
+}
+
+.parallax-title{
+    margin-top: 160px;
+}
+
+.card-image-cover{
+    width: 100%;
+}
+
+.no-space-row{
+    margin-bottom: 0 !important;
+}
+
+.add-btn-flt{
+position: relative;    
+float: right;
+top: -18px;
+right: 10%; 
+}
+
+#redes-sociais li{
+    width: 50px;
+    float: left;
+    margin-right: 20px;
+}
+
+
+.menu-esquerda a{        
+    padding-left: 10px;
+    float: left;
+    margin-right: 20px;
+}
+
+
+.sidenav-trigger {        
+    position: fixed;
+    padding-left: 10px;    
+    margin-right: 20px;
+}
+
+
+
+
+/*
+.menu-esquerda{
+    position: absolute;
+    top: 0; 
+    bottom: 0;
+    left: 0; 
+    right: 0;
+    margin: auto;
+}*/
