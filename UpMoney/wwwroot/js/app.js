@@ -23,13 +23,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.parallax');
     var instances = M.Parallax.init(elems, 100);
 });
-
-
 
 //BOTÃO FLUTUANTE//
 document.addEventListener('DOMContentLoaded', function () {
