@@ -14,59 +14,48 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-<body>
+<body> 
 
-  <header>
-    <nav class="blue darken-1">           
+ 
 
-            <div class="nav-wrapper">
-                <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul class="left fixed " id="menu-esquerda">                    
-                        <a href="#"><img src="~/img/saco de dinheiro1.png" alt="Home Page" class="logo-home"></a>                        
-                        <a href="#" class="titulo-nav" style="font-family: 'Merienda One', cursive;">Up Money</a>                    
-                </ul>
-
-                <ul class="right hide-on-med-and-down">                
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Dicas Financeiras</a></li>
-                    <li><a href="#">Sobre</a></li>
-                </ul>
-            </div>         
-    </nav>
-
-    @*<h1 id="nome" style="font-family: 'Merienda One', cursive;">Home page</h1>*@
-
-    <ul id="slide-out" class="sidenav">
-        <li><a href="#">opcao 1</a></li>
-        <li><a href="#">opcao 2</a></li>
-        <li><a href="#">opcao 3</a></li>
-    </ul>   
-    </header>
-
-  <main>
-    
-      @*<div class="parallax-container">
-        <div class="container">
-          <h2 class="white-text center-align">Primeira foto</h2>
-        </div>
-        <div class="parallax"><img src="~/img/dinheiro1.jpg"></div>
-      </div>*@
-
-  <!-- <div class="section grey lighten-2">
-
-  </div> -->
-
-      <div class="parallax-container">
-          <div class="container">
-              <h2 class="white-text center-align">Primeira foto</h2>
+       <div class="parallax-container z-depth-3">
+          <div class="container " id="titulo-banner">
+              <h2 class="center parallax-title">Chega de Receber Supresas Desagradáveis!</h2>
           </div>
-
-          <img src="~/img/dinheiro-bolso.jpg" class="parallax">
+          <div class="parallax"><img src="~/img/casal-preocupado1.jpg"></div>
       </div>
+    
+       <div class="section center">
+           
+       </div>
 
-  </main>
+      <div class="parallax-container z-depth-3" >
+          <div class="container" id="titulo-banner">
+              <h2 class="center parallax-title">Nós Podemos te Ajudar à Chegar ao Sucesso Financeiro!</h2>
+          </div>
+          <div class="parallax"><img src="~/img/sucesso.jpg"></div>
+      </div> 
 
+    <div class="section center">
+        <div class="row container">
+            <h5 class="header">Liberte-se das dívidas!</h5>            
+        </div>
+    </div>
+
+      <div class="parallax-container z-depth-3">
+          <div class="container" id="titulo-banner">
+              <h2 class="center parallax-title">Experimente Já e Volte a Ter o Controle do Seu Dinheiro!</h2>
+          </div>
+          <div class="parallax"><img src="~/img/moedas.jpg"></div>
+      </div>
+  
 </body>
 
 <script type="text/javascript" src="~/js/app.js"></script>
+@*<script>
 
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.parallax');
+        var instances = M.Parallax.init(elems, {});
+    });
+</script>*@

@@ -15,14 +15,13 @@ namespace UpMoney.Controllers
             return View();
         }
 
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
-        public IActionResult About()
+        public IActionResult MenuPrincipal()
         {
-            ViewData["Message"] = "Your application description page.";
+            return View();
+        }
+
+        public IActionResult Sobre()
+        {         
 
             return View();
         }

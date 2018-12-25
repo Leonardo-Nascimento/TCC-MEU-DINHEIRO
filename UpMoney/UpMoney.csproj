@@ -5,16 +5,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Home\Index.cshtml" />
+    <Content Remove="Views\Home\MenuPrincipal.cshtml" />
+    <Content Remove="Views\Shared\Navbar.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\MenuPrincipal.cshtml" />
+    <None Include="Views\Shared\Navbar.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>
 
 </Project>

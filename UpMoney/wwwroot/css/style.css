@@ -1,58 +1,5 @@
-/* #header-logo{
-    font-size: 18px
-}
 
-.mini-perfil{
-    width: 40px;
-    margin-top: 12px;
-    margin-right: 35px;
-}
-
-#dropdown1{
-   top:64px !important;
-}
-
-.parallax-title{
-    margin-top: 160px;
-}
-
-.card-image-cover{
-    width: 100%;
-}
-
-.no-space-row{
-    margin-bottom: 0 !important;
-}
-
-.add-btn-flt{
-position: relative;    
-float: right;
-top: -18px;
-right: 10%; 
-}
-
-#redes-sociais li{
-    width: 50px;
-    float: left;
-    margin-right: 20px;
-}
-
-
-.sidenav-trigger {        
-    position: fixed;
-    padding-left: 10px;    
-    margin-right: 20px;
-}
-
-
-#form-cadastro {
-width: 50px;
-} */
-
-
-
-
-
+/*------INDEX-----*/
 #nome {
     color: blue;
 }
@@ -62,30 +9,88 @@ width: 50px;
     height: 65px;
 }
 
-/* #menu-esquerda{
-padding-left: 5px;
-color: black;
-} */
 
-
-#menu-esquerda a{        
+#menu-esquerda a {
     padding-left: 10px;
     float: left;
     margin-right: 20px;
-} 
+}
 
 .titulo-nav {
-margin-left: -30px;
-font-size: 25px;
+    margin-left: -30px;
+    font-size: 25px;
+    margin-top: 0px;
 }
+
 
 .parallax-container h2 {
     margin-top: 200px;
-    font-size: 80px;
+    text-align: center;
+    color: white;
+}
+
+.parallax-container {
+    height: 500px !important;
+    align-items: center !important;
+    width: 1661px !important;
+    opacity: 0.95;
+    margin-left: 0.5% !important;
+    margin-top: 20px;
+    margin-left: -247px !important;
+}
+
+#responsive-img{
+    height: 50%;
+    margin-top: 160px;
+    /*width:100px;*/
+}
+
+div#titulo-banner.container {
+    font-size: 40px !important;
+}
+
+#titulo-banner {
+    opacity: 0.45;
+    width: 100%;
+    background-color:#080808db;
+    text-align:center;
+}
+
+
+
+/*-------LOGIN-------*/
+#form-login {
+    display: inline-block;
+    padding: 32px 48px 0px 48px;
+    border: 1px solid #EEE;
+    width: 40%;
+}
+
+body{
+    background-color: #e0e0e0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    width: 100%;
+}
+
+  main {
+    flex: 1 0 auto;
   }
 
-  .parallax-container {
-  position: relative;
-  overflow: hidden;
-  height: 600px;
+  .logo-login {
+    width: 66px;
+    height: 61px;
+    margin-left: 85px;
+    /* align-items: center; */
+    margin-top: -25px;
+    margin-bottom: 8px;
   }
+
+/*----------Template------------*/
+/*iframe {
+    border-width: 0px;
+    height: -webkit-fill-available;
+}*/

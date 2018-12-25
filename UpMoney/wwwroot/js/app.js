@@ -16,6 +16,7 @@
 //  $('#modal1').modal('open'); 
 //});
 
+//MENU LATERAL//
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems, {});
@@ -23,8 +24,21 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-//document.addEventListener('DOMContentLoaded', function () {
-//    var elems = document.querySelectorAll('.parallax');
-//    var instances = M.Parallax.init(elems, {});
-//});
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.parallax');
+    var instances = M.Parallax.init(elems, 100);
+});
 
+
+
+//BOTÃO FLUTUANTE//
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, { hoverEnabled: false });
+});
+
+//CALENDARIO//
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, options);
+  });
