@@ -15,17 +15,17 @@ namespace UpMoney.Controllers
             return View();
         }
 
-     
 
-        public IActionResult CriarLogin(UsuarioModel usuario)
+        [HttpGet]
+        public IActionResult CadUsuario()
         {
-            bool CadUsuario = usuario.RegistrarUsuario();
+            //bool cadUsuario = usuario.RegistrarUsuario();
 
-            if (CadUsuario)
-            {
-                return RedirectToAction("MenuPrincipal", "Home");
-            }else
-                return RedirectToAction("LoginErro", "Usuario");
+            //if (cadUsuario)
+            //{
+            //    return RedirectToAction("MenuPrincipal", "Home");
+            //}else
+            return View();
         }
 
         public IActionResult ValidarLogin(UsuarioModel usuario)
