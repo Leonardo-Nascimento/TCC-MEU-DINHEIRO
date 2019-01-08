@@ -15,6 +15,19 @@ namespace UpMoney.Controllers
             return View();
         }
 
+     
+
+        public IActionResult CriarLogin(UsuarioModel usuario)
+        {
+            bool CadUsuario = usuario.RegistrarUsuario();
+
+            if (CadUsuario)
+            {
+                return RedirectToAction("MenuPrincipal", "Home");
+            }else
+                return RedirectToAction("LoginErro", "Usuario");
+        }
+
         public IActionResult ValidarLogin(UsuarioModel usuario)
         {
 
@@ -30,7 +43,7 @@ namespace UpMoney.Controllers
             else
             {
                 //TempData["MensagemLoginInvalido"] = "Dados de login inválidos!";
-                return RedirectToAction("LoginErro");
+                return RedirectToAction("CadErro");
             }
         }
     }

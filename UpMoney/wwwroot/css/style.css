@@ -11,9 +11,9 @@
 
 
 #menu-esquerda a {
-    padding-left: 10px;
+    /* padding-left: 10px; */
     float: left;
-    margin-right: 20px;
+    /* margin-right: 20px; */
 }
 
 .titulo-nav {
@@ -30,23 +30,26 @@
 }
 
 .parallax-container {
-    height: 500px !important;
-    align-items: center !important;
-    width: 1661px !important;
+
+    width: 120% !important;
+    position: relative;
     opacity: 0.95;
-    margin-left: 0.5% !important;
     margin-top: 20px;
-    margin-left: -247px !important;
+    margin-left: -89px !important;
+  
 }
+
+
 
 #responsive-img{
     height: 50%;
     margin-top: 160px;
-    /*width:100px;*/
+    width:100px;
 }
 
 div#titulo-banner.container {
     font-size: 40px !important;
+    width: 80% !important;
 }
 
 #titulo-banner {
@@ -61,9 +64,17 @@ div#titulo-banner.container {
 /*-------LOGIN-------*/
 #form-login {
     display: inline-block;
-    padding: 32px 48px 0px 48px;
+    padding: 31px 40px 31px 40px;
     border: 1px solid #EEE;
-    width: 40%;
+    width: 45%;
+}
+
+#form-cadUsuario {
+    display: inline-block;
+    padding: 1px 25px 3px 25px;
+    border: 1px solid #EEE;
+    width: 45%;
+    margin-top: 2rem;
 }
 
 body{

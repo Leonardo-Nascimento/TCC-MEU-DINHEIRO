@@ -2,8 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebApplication1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
 
     <environment include="Development">
         @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -14,7 +13,7 @@
         <link href="https://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet">
 
         <!--Import materialize.css-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">                 
         <link rel="stylesheet" href="~/css/style.css">
 
         <!--Import Jquery e JavaScript-->
@@ -31,7 +30,7 @@
 </head>
 <body>
     
-        <nav class="blue darken-1">
+        <nav class="blue darken-1 col s12">
             <div class="nav-wrapper">
                 <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="left fixed " id="menu-esquerda">
@@ -61,7 +60,7 @@
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
+        
 
     </div>
 

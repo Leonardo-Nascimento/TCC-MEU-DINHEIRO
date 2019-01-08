@@ -18,21 +18,27 @@ namespace UpMoney.Models
         [Required(ErrorMessage = "Informe seu Nome!")]
         public String Nome { get; set; }
 
-        //[Required(ErrorMessage = "Informe seu Email!")]
-        //public String Email { get; set; }
+        [Required(ErrorMessage = "Informe seu Email!")]
+        public String Email { get; set; }
 
-        //[Required(ErrorMessage = "Informe sua password!")]
-        //public String password { get; set; }    
+        [Required(ErrorMessage = "Informe sua password!")]
+        public String Senha { get; set; }
 
-        string Email = "leo@gmail.com";
-        string password = "1234";
+        //string Email = "leo@gmail.com";
+        //string password = "1234";
 
+      
 
         public bool ValidarLogin()
         {
-            string sql = $"SELECT IDCLIENTE,NOME FROM CLIENTE WHERE EMAIL = '{Email}' AND SENHA = '{password}'";
-            DAL OBJDAL = new DAL();
-            DataTable dt = OBJDAL.RetDataTable(sql);
+            DataTable dt = null;
+
+            if (Email != null && Email != "" && Senha != null && Senha != "")
+            {
+                string sql = $"SELECT IDCLIENTE,NOME FROM CLIENTE WHERE EMAIL = '{Email}' AND SENHA = '{Senha}'";
+                DAL OBJDAL = new DAL();
+                dt = OBJDAL.RetDataTable(sql);
+            }
 
             if (dt != null)
             {
@@ -49,12 +55,31 @@ namespace UpMoney.Models
             return false;
         }
 
-        public void RegistrarUsuario()
+        public bool RegistrarUsuario()
         {
+
+
+            if (Nome != null && Nome != "" && Email != null && Email != "" && Senha != null && Senha != "")
+            {
+                try
+                {
+                    string sql = $"INSERT INTO CLIENTE (NOME,EMAIL,SENHA) VALUE('{Nome}', '{Email}','{Senha})";
+                    DAL objDAL = new DAL();
+                    objDAL.ExecutaComandoSQL(sql);
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+            }
+            else
+                return false; 
+                
+                
+
             //string dataNascimento = DateTime.Parse(Data_Nascimento).ToString("yyyy/MM/dd");
-            string sql = $"INSERT INTO CLIENTE (NOME, EMAIL, password) VALUE('{Nome}', '{Email}','{password}')";
-            DAL objDAL = new DAL();
-            objDAL.ExecutaComandoSQL(sql);
+ 
 
 
         }

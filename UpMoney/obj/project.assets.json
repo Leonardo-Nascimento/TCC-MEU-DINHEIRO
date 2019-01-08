@@ -12224,11 +12224,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\TCC\\TCC-MEU-DINHEIRO\\UpMoney\\UpMoney.csproj",
+      "projectUniqueName": "E:\\TCC\\TCC-MEU-DINHEIRO\\UpMoney\\UpMoney.csproj",
       "projectName": "UpMoney",
-      "projectPath": "F:\\TCC\\TCC-MEU-DINHEIRO\\UpMoney\\UpMoney.csproj",
+      "projectPath": "E:\\TCC\\TCC-MEU-DINHEIRO\\UpMoney\\UpMoney.csproj",
       "packagesPath": "C:\\Users\\LEO\\.nuget\\packages\\",
-      "outputPath": "F:\\TCC\\TCC-MEU-DINHEIRO\\UpMoney\\obj\\",
+      "outputPath": "E:\\TCC\\TCC-MEU-DINHEIRO\\UpMoney\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
