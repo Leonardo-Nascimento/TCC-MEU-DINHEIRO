@@ -34,8 +34,21 @@ document.addEventListener('DOMContentLoaded', function () {
     var instances = M.FloatingActionButton.init(elems, { hoverEnabled: false });
 });
 
+//TUTORIAL DO BOTAO DO MENU//
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.tap-target');
+    var instances = M.TapTarget.init(elems, options);
+  });
+
 //CALENDARIO//
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.datepicker');
     var instances = M.Datepicker.init(elems, options);
+  });
+
+//BOTÃO DROPDOWN//
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems, 'dropdown1');
   });

@@ -100,8 +100,42 @@ body{
     margin-bottom: 8px;
   }
 
-/*----------Template------------*/
-/*iframe {
-    border-width: 0px;
-    height: -webkit-fill-available;
-}*/
+/*----------Menu Principal------------*/
+
+.navbar2 {   
+    width: 100%;    
+    border-radius: 50px;
+    margin-top: 5px;
+    height: 47px;
+}
+
+.waves-effect {
+    border-radius: 50px !important;
+}
+
+nav ul a.btn {
+    margin-top: -21px !important;
+    height: 30px !important;
+}
+
+nav ul a p {
+    margin-top: -2px;
+}
+
+ul#dropdown1 {
+    z-index: 1000;
+}
+    
+ul#dropdown1 {
+    position: absolute;
+    margin-top: 22px;
+}
+
+/* ul a:hover: {
+    opacity: 1;
+  } */
+
+  .navbar2 ul a:hover{
+    color: #fff;
+  }
+

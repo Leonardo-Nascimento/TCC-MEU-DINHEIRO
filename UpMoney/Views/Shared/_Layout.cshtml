@@ -28,42 +28,46 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>*@
 </head>
-<body>
-    
-        <nav class="blue darken-1 col s12">
-            <div class="nav-wrapper">
-                <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul class="left fixed " id="menu-esquerda">
-                    <a href="../Home"><img src="~/img/saco de dinheiro1.png" alt="Home Page" class="logo-home"></a>
-                    <a href="#" class="titulo-nav" style="font-family: 'Merienda One', cursive;">Up Money</a>
-                </ul>
+<body> 
 
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="../Usuario/Login">Login</a></li>
-                    <li><a href="#">Dicas Financeiras</a></li>
-                    <li><a href="../Home/Sobre">Sobre</a></li>
-                </ul>
-            </div>
-        </nav>
+    <nav class="blue darken-1 col s12">
+        <div class="nav-wrapper">
+            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="left fixed " id="menu-esquerda">
+                <a href="../Home"><img src="~/img/saco de dinheiro1.png" alt="Home Page" class="logo-home"></a>
+                <a href="#" class="titulo-nav" style="font-family: 'Merienda One', cursive;">Up Money</a>
+            </ul>
 
+            <ul class="right hide-on-med-and-down">
+                <li><a href="../Usuario/Login">Login</a></li>
+                <li><a href="#">Dicas Financeiras</a></li>
+                <li><a href="../Home/Sobre">Sobre</a></li>
+                @{
+                    if (@TempData["Nome"] != null)
+                    {
 
-
-        <ul id="slide-out" class="sidenav">
-            <li><a href="#">opcao 1</a></li>
-            <li><a href="#">opcao 2</a></li>
-            <li><a href="#">opcao 3</a></li>
-        </ul>
-    
+                        <li>@ViewData["Nome"]</li>
+                    }
+                }
+            </ul>
+        </div>
+    </nav>
 
 
+
+    <ul id="slide-out" class="sidenav">
+        <li><a href="#">opcao 1</a></li>
+        <li><a href="#">opcao 2</a></li>
+        <li><a href="#">opcao 3</a></li>
+    </ul>
 
 
     <div class="container body-content">
         @RenderBody()
-        
+
 
     </div>
 
-    
+
 </body>
 </html>
