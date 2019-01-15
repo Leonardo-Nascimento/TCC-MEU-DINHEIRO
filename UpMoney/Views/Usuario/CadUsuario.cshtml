@@ -14,29 +14,26 @@
     <div class="container">
         <div class="z-depth-1 grey lighten-4 row" id="form-cadUsuario">
 
-            <form asp-controller="Usuario" asp-action="CriarLogin" method="post">
-
-                
+            <form asp-controller="Usuario" asp-action="CriarLogin" method="post">                
 
                 <div class="row">
                     <div class="input-field col s12 inline">
-                        <input id="nomeCompleto_inline" type="text" class="validate">
-                        <label for="nomeCompleto_inline">Nome Completo</label>
+                        <input id="nomeCompleto" name="Nome" type="text" class="validate">
+                        <label for="nomeCompleto">Nome Completo</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12 inline">
-                        <input id="senha_inline" type="password" class="validate">
-                        <label for="senha_inline">Senha</label>
+                        <input id="senha" name="Senha" type="password" class="validate">
+                        <label for="senha">Senha</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12 inline">
-                        <input id="email_inline" type="email" class="validate">
-                        <label for="email_inline">Email</label>
-                        <!-- <span class="helper-text" data-error="Endereço de email inválido!"></span> -->
+                        <input id="email" name="Email" type="email" class="validate">
+                        <label for="email">Email</label>                        
                     </div>
                 </div>
 
@@ -46,8 +43,6 @@
                         <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo' >Criar Conta</button>
                     </div>
                 </center>
-
-
 
             </form>
 

@@ -8,6 +8,8 @@ using UpMoney.Models;
 
 namespace UpMoney.Controllers
 {
+    
+
     public class UsuarioController : Controller
     {
         public IActionResult Login()
@@ -19,32 +21,49 @@ namespace UpMoney.Controllers
         [HttpGet]
         public IActionResult CadUsuario()
         {
-            //bool cadUsuario = usuario.RegistrarUsuario();
-
-            //if (cadUsuario)
-            //{
-            //    return RedirectToAction("MenuPrincipal", "Home");
-            //}else
+            
             return View();
         }
+
+        [HttpPost]
+        public IActionResult CriarLogin(UsuarioModel usuario)
+        {           
+
+            bool cadUsuario = usuario.RegistrarUsuario();
+
+            if (cadUsuario)
+            {                
+                return RedirectToAction("MenuPrincipal", "Home");
+            }
+            else
+                return RedirectToAction("LoginErro");
+        }
+
+
 
         public IActionResult ValidarLogin(UsuarioModel usuario)
         {
 
              bool login = usuario.ValidarLogin();
+            
             if (login)
             {
-                //HttpContext.Session.SetString("NomeUsuarioLogado", usuario.Nome);
-                //HttpContext.Session.SetString("IdUsuarioLogado", usuario.Id.ToString());
-                //return RedirectToAction("Menu", "Home");
+                //TempData["NOME"] = "LEONARDO";
+                HttpContext.Session.SetString("NomeUsuarioLogado", usuario.Nome);                
                 return RedirectToAction("MenuPrincipal","Home");
 
             }
             else
             {
-                //TempData["MensagemLoginInvalido"] = "Dados de login inválidos!";
-                return RedirectToAction("CadErro");
+               
+                return RedirectToAction("LoginErro");
+                
             }
+        }
+
+        public IActionResult LoginErro()
+        {
+            return View();
         }
     }
 }

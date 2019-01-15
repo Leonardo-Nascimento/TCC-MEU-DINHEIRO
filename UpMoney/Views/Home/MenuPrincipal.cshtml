@@ -15,35 +15,6 @@
 <script type="text/javascript" src="js/app.js"></script>*@
 
 
-@*<iframe src="Navbar.html" width="">*@
-    <!-- <header>
-            <nav class="blue darken-1">
-
-                <div class="nav-wrapper">
-                    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                    <ul class="left fixed " id="menu-esquerda">
-                        <a href="#"><img src="img/saco de dinheiro1.png" alt="Home Page" class="logo-home"></a>
-                        <a href="#" class="titulo-nav" style="font-family: 'Merienda One', cursive;">Up Money</a>
-                    </ul>
-
-                    <ul class="right hide-on-med-and-down">
-                        <li><a href="Meu Login.html">Login</a></li>
-                        <li><a href="#">Dicas Financeiras</a></li>
-                        <li><a href="#">Sobre</a></li>
-                    </ul>
-                </div>
-            </nav>
-
-            <ul id="slide-out" class="sidenav">
-                <li><a href="#">opcao 1</a></li>
-                <li><a href="#">opcao 2</a></li>
-                <li><a href="#">opcao 3</a></li>
-            </ul>
-        </header> -->
-
-    
-
-@*</iframe>*@
 
     
 <div class="fixed-action-btn ">
@@ -57,4 +28,62 @@
     </ul>
   </div>
 
-<h1>MENU PRINCIPAL</h1>
+<h1>@ViewData["NOME"]</h1>
+
+<body>
+
+
+    <nav class="navbar2 grey col s12 m12" id="navbar2">
+        <div class="nav-content">
+            <ul>
+                <li><a class="waves-effect blue btn"><p>BOTÃO1</p></a></li>
+                <li><a class="waves-effect blue btn"><p>BOTÃO2</p></a></li>
+                <li><a class="waves-effect blue btn"><p>BOTÃO3</p></a></li>
+                <li><a class="waves-effect blue btn"><p>BOTÃO4</p></a></li>
+                <li><a class='dropdown-trigger blue btn' data-target='dropdown1'><p>BOTÃO5</p></a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <ul id='dropdown1' class='dropdown-content'>
+        <li><a href="#!">one</a></li>
+        <li><a href="#!">two</a></li>
+        <li class="divider" tabindex="-1"></li>
+        <li><a href="#!">three</a></li>
+        <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+        <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+    </ul>
+
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#!">one</a></li>
+        <li><a href="#!">two</a></li>
+        <li class="divider"></li>
+        <li><a href="#!">three</a></li>
+    </ul>
+
+
+    <main>
+        <div class="fixed-action-btn ">
+            <a class="btn-floating btn-large red ">
+                <i class="large material-icons ">add</i>
+            </a>
+            <ul>
+                <li><a class="btn-floating deep-purple darken-4"><i class="material-icons" title="Transação">swap_horiz</i></a></li>
+                <li><a class="btn-floating green"><i class="material-icons" title="Receita">publish</i></a></li>
+                <li><a class="btn-floating red"><i class="material-icons" title="Despesa">file_download</i></a></li>
+            </ul>
+        </div>
+
+    </main>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.dropdown-trigger');
+            var instances = M.Dropdown.init(elems, options);
+        });
+    </script>
+
+</body>
