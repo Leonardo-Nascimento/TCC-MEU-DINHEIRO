@@ -102,8 +102,8 @@ body{
 
 /*----------Menu Principal------------*/
 
-.navbar2 {   
-    width: 100%;    
+.navbar2 {
+    width: 100%;
     border-radius: 50px;
     margin-top: 5px;
     height: 47px;
@@ -125,7 +125,8 @@ nav ul a p {
 ul#dropdown1 {
     z-index: 1000;
 }
-    
+
+
 ul#dropdown1 {
     position: absolute;
     margin-top: 22px;
@@ -135,6 +136,7 @@ ul#dropdown1 {
     opacity: 1;
   } */
 
-  .navbar2 ul a:hover{
+.navbar2 ul a:hover {
     color: #fff;
-  }
+}
+
