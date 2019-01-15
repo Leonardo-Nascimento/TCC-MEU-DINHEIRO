@@ -21,7 +21,7 @@ namespace UpMoney.Models
         [Required(ErrorMessage = "Informe seu Email!")]
         public String Email { get; set; }
 
-        [Required(ErrorMessage = "Informe sua password!")]
+        [Required(ErrorMessage = "Informe uma Senha!")]
         public String Senha { get; set; }
 
         //string Email = "leo@gmail.com";
@@ -63,7 +63,7 @@ namespace UpMoney.Models
             {
                 try
                 {
-                    string sql = $"INSERT INTO CLIENTE (NOME,EMAIL,SENHA) VALUE('{Nome}', '{Email}','{Senha})";
+                    string sql = $"INSERT INTO CLIENTE (NOME,EMAIL,SENHA) VALUES ('{Nome}', '{Email}','{Senha}')";
                     DAL objDAL = new DAL();
                     objDAL.ExecutaComandoSQL(sql);
                     return true;
