@@ -22,6 +22,9 @@
     margin-top: 0px;
 }
 
+.navbar-fixed {
+    z-index: 900;
+}
 
 .parallax-container h2 {
     margin-top: 200px;
@@ -30,15 +33,12 @@
 }
 
 .parallax-container {
-
     width: 120% !important;
     position: relative;
     opacity: 0.95;
     margin-top: 20px;
-    margin-left: -89px !important;
-  
+    margin-left: -89px !important;  
 }
-
 
 
 #responsive-img{
@@ -109,9 +109,6 @@ body{
     height: 47px;
 }
 
-.waves-effect {
-    border-radius: 50px !important;
-}
 
 nav ul a.btn {
     margin-top: -21px !important;
@@ -125,16 +122,17 @@ nav ul a p {
 ul#dropdown1 {
     z-index: 1000;
 }
-    
-ul#dropdown1 {
-    position: absolute;
-    margin-top: 22px;
-}
-
-/* ul a:hover: {
-    opacity: 1;
-  } */
 
   .navbar2 ul a:hover{
     color: #fff;
+  }
+
+  .menuFixo ul{    
+    top: 65px;  
+    width: unset;  
+  }
+
+
+  #dropdown1{
+      top:100px !important;
   }
