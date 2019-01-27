@@ -20,16 +20,6 @@
 
 
 
-<div class="fixed-action-btn ">
-    <a class="btn-floating btn-large red ">
-        <i class="large material-icons ">add</i>
-    </a>
-    <ul>
-        <li><a class="btn-floating deep-purple darken-4"><i class="material-icons" title="Transação">swap_horiz</i></a></li>
-        <li><a class="btn-floating green"><i class="material-icons" title="Receita">publish</i></a></li>
-        <li><a class="btn-floating red"><i class="material-icons" title="Despesa">file_download</i></a></li>
-    </ul>
-</div>
 
 <h1>@ViewData["NOME"]</h1>
 
@@ -62,14 +52,60 @@
         <li><a href="#!">one</a></li>
         <li><a href="#!">two</a></li>
         <li><a href="#!">three</a></li>
+
     </ul>
 
 
     <div class="menuFixo">
         <ul id="slide-out" class="sidenav sidenav-fixed grey lighten-5">
-            <li><a href="#!">Receitas</a></li>
-            <li><a href="#!">Despesas</a></li>
-            <li> <a class='dropdown-trigger btn' data-target='dropdown1'><p>BOTÃO5</p></a></li>
+            
+                <ul class="collapsible collapsible-accordion"  style="transform: translateX(0%);">
+                        <li>
+                            <div class="collapsible-header"> 
+                                <i class="material-icons green-text">publish</i>RECEITAS 
+                            </div>
+            
+                            <div class="collapsible-body">
+                                <ul >
+                                    <li><a href="#!">opção 1</a></li>
+                                    <li><a href="#!">opção 2</a></li>
+                                    <li><a href="#!">opção 3</a></li>                        
+                                </ul>
+                            </div>
+                        </li>
+            
+                        <li>
+                            <div class="collapsible-header"> 
+                                <i class="material-icons red-text">file_download</i>DESPESAS
+                            </div>
+            
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="#!">opção 1</a></li>
+                                    <li><a href="#!">opção 2</a></li>
+                                    <li><a href="#!">opção 3</a></li>
+                                </ul>
+                            </div>
+                        </li>
+            
+                        <li>
+                            <div class="collapsible-header">
+                                <i class="material-icons deep-purple-text ">swap_horiz</i>TRANSAÇÃO
+                            </div>
+            
+                            <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="#!">opção 1</a></li>
+                                        <li><a href="#!">opção 2</a></li>
+                                        <li><a href="#!">opção 3</a></li>
+                                    </ul>
+                            </div>            
+                        </li>
+                   
+                    </ul>
+
+
+
         </ul>
     </div>
     <!-- 
@@ -94,6 +130,7 @@
 
 
     <main>
+
         <div class="fixed-action-btn ">
             <a class="btn-floating btn-large red ">
                 <i class="large material-icons ">add</i>
@@ -104,6 +141,7 @@
                 <li><a class="btn-floating red"><i class="material-icons" title="Despesa">file_download</i></a></li>
             </ul>
         </div>
+
     </main>
 
 

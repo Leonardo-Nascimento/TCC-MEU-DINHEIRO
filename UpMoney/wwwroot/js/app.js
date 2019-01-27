@@ -46,3 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.Dropdown.init(elems,  { });    
   });
 
+//EFEITO COLLAPSIBLE DO MENU LATERAL//
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems, {});
+  });
