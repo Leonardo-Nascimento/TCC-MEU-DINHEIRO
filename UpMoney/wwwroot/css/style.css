@@ -138,3 +138,8 @@ ul#dropdown1 {
     margin-left: 0px;
     margin-top: 60px;
   }
+  
+  .collapsible-header #btnSair{
+    margin-left: 46px;
+    color:sienna;
+  }
