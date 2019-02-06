@@ -1,0 +1,72 @@
+﻿@{
+ViewData["Title"] = "Receitas";
+Layout = "~/Views/Shared/Layout2.cshtml";
+}
+
+<h2>Receitas</h2>
+
+
+
+
+
+
+
+<body>
+
+    <input type="text" class="datepicker">
+
+    <div>
+        <div class="input-field col s12">
+            <select onchange="selectoption()">
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+            </select>
+            <label>Filtrar por:</label>
+        </div>
+    </div>
+
+    <div id="grid">
+
+        <table class="highlight centered" id="grid">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Item Name</th>
+                    <th>Item Price</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                </tr>
+                <tr>
+                    <td>Alan</td>
+                    <td>Jellybean</td>
+                    <td>$3.76</td>
+                </tr>
+                <tr>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>$7.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+    <script>
+
+
+    </script>
+
+
+
+
+
+</body>

@@ -34,12 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var instances = M.FloatingActionButton.init(elems, { hoverEnabled: false });
 });
 
-//CALENDARIO//
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.datepicker');
-    var instances = M.Datepicker.init(elems, options);
-  });
-
   //BOTÃO DROPDOWN//
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.dropdown-trigger');
@@ -52,3 +46,29 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.collapsible');
     var instances = M.Collapsible.init(elems, {});
   });
+
+
+  //EFEITO DO CALENDÁRIO//
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, {
+        format: 'dd/mm/yyyy'
+    });    
+  });
+
+
+  //EFEITO SELECT DOS FILTROS//
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {});
+  });
+
+
+
+function selectoption(){
+debugger
+    alert('xablau');
+
+}

@@ -143,3 +143,10 @@ ul#dropdown1 {
     margin-left: 46px;
     color:sienna;
   }
+
+  /*----------Tabela de Receitas e Despesas------------*/
+
+  #grid{
+    background-color: white;
+
+  }

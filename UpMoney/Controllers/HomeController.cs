@@ -33,8 +33,6 @@ namespace UpMoney.Controllers
 
             ViewData["NOME"] = "";
             return View();
-
-
         }
 
         public IActionResult Sobre()
