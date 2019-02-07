@@ -53,8 +53,8 @@ CREATE TABLE Cliente_Movimentacao (
 CREATE TABLE Conta (
   idConta INT IDENTITY(1, 1) NOT NULL,
   idCliente INT NOT NULL,
-  NomeConta VARCHAR NULL,
-  TipoConta VARCHAR NULL,
+  NomeConta VARCHAR (50),
+  TipoConta VARCHAR (50),
   PRIMARY KEY(idConta),
   
   CONSTRAINT fk_idCliente
@@ -68,7 +68,7 @@ CREATE TABLE Orçamentos (
   idOrçamento INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   Tipo_Orçamento_idTipoOrçamento INTEGER UNSIGNED NOT NULL,
   Cliente_idIdCliente INTEGER UNSIGNED NOT NULL,
-  DsOrçamento VARCHAR NULL,
+  DsOrçamento VARCHAR (50),
   Valor FLOAT NULL,
   PRIMARY KEY(idOrçamento, Tipo_Orçamento_idTipoOrçamento, Cliente_idIdCliente),
   INDEX Orçamentos_FKIndex1(Tipo_Orçamento_idTipoOrçamento),
@@ -96,8 +96,8 @@ CREATE TABLE Despesas (
 CREATE TABLE Receitas (
   idReceita INT IDENTITY(1, 1) NOT NULL,
   TipoReceita INT,
-   DATA DATE,  
-  DsReceita VARCHAR ,
+  DATA DATE,  
+  DsReceita VARCHAR(50) ,
   ValorReceita DECIMAL,  
   PRIMARY KEY(idReceita),
   
@@ -148,19 +148,25 @@ INSERT INTO TipoReceita VALUES('Outras Receitas')
 
 SELECT * FROM TipoReceita AS tr
 
+DELETE FROM TipoReceita WHERE IdTipoReceita> 10
+
 
 /*----------INSERINDO RECEITAS------------*/
 
 
---INSERT INTO Receitas(TipoReceita,ValorReceita,DsReceita)VALUES(6,60,'bolsa de valores')
+INSERT INTO Receitas(TipoReceita,ValorReceita,Data,DsReceita)VALUES(6,60,'07-02-2019','bolsa de valores')
 
---INSERT INTO Receitas(TipoReceita,ValorReceita,DsReceita)VALUES(7,2400,'Meu salário')
+INSERT INTO Receitas(TipoReceita,ValorReceita,Data,DsReceita)VALUES(7,2400,'07-02-2019','Meu salário')
 
---INSERT INTO Receitas(TipoReceita,ValorReceita,DsReceita)VALUES(10,100,'Conserto de pc')
+INSERT INTO Receitas(TipoReceita,ValorReceita,Data,DsReceita)VALUES(10,100,'07-02-2019','Conserto de pc')
 
---INSERT INTO Receitas(TipoReceita,ValorReceita,DsReceita)VALUES(8,200,'Compra no cartão')
+INSERT INTO Receitas(TipoReceita,ValorReceita,Data,DsReceita)VALUES(8,200,'07-02-2019','Compra no cartão')
 
---INSERT INTO Receitas(TipoReceita,ValorReceita,DsReceita)VALUES(10,60,'venda da mesa')
+INSERT INTO Receitas(TipoReceita,ValorReceita,Data,DsReceita)VALUES(8,100,'07-02-2019','venda da peça da bike')
 
 
 SELECT * FROM Receitas AS r
+
+
+ALTER TABLE Receitas ALTER COLUMN DsReceita VARCHAR(50)  
+GO 
