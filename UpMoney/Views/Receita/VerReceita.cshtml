@@ -16,42 +16,64 @@ Layout = "~/Views/Shared/Layout2.cshtml";
     <input type="text" class="datepicker">
 
     <div>
-        <div class="input-field col s12">
-            <select onchange="selectoption()">
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
+        <div class="input-field col s12" id="filtro">
+            <select onchange="" id="listaFiltro">
+                <option value="1" class="">Data</option>
+                <option value="2" onclick="selectoption();">Intervalo de Data</option>
+              
+
+                <option value="3">Descrição</option>
+                <option value="4">Valor</option>
             </select>
             <label>Filtrar por:</label>
         </div>
     </div>
+
+
+    <div id="modal1" class="modal">
+        <div class="modal-content">            
+            <p>A bunch of text</p>
+        </div>
+    </div>
+
+
+  
 
     <div id="grid">
 
         <table class="highlight centered" id="grid">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Item Name</th>
-                    <th>Item Price</th>
+                    <th>Data</th>
+                    <th>Descrição</th>
+                    <th>Categoria</th>
+                    <th>Valor</th>
+                    <th>Conta</th>
                 </tr>
             </thead>
 
             <tbody>
                 <tr>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
+                    <td>12/12/2019</td>
+                    <td>venda de peças</td>
+                    <td>venda</td>
+                    <td>$100</td>
+                    <td>carteira</td>
                 </tr>
                 <tr>
-                    <td>Alan</td>
-                    <td>Jellybean</td>
-                    <td>$3.76</td>
+                    <td>19/02/2019</td>
+                    <td>extra</td>
+                    <td>sem categoria</td>
+                    <td>$500</td>
+                    <td>banco do brasil</td>
                 </tr>
+
                 <tr>
-                    <td>Jonathan</td>
-                    <td>Lollipop</td>
-                    <td>$7.00</td>
+                    <td>28/01/2019</td>
+                    <td>extorno do cartão</td>
+                    <td>reembolso</td>
+                    <td>$480</td>
+                    <td>banco do bradesco</td>
                 </tr>
             </tbody>
         </table>

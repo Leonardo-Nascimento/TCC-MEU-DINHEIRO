@@ -65,10 +65,17 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.FormSelect.init(elems, {});
   });
 
+//Modals//
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, {});
+  });
 
 
 function selectoption(){
-debugger
-    alert('xablau');
+
+  window.open('#modal1');
+  
 
 }
