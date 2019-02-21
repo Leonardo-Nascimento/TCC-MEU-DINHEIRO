@@ -162,3 +162,18 @@ ul#dropdown1 {
   #filtro ul li span{
     font-size: 14px !important;
   }
+
+#intervaloData {
+    margin-left: 200px;
+    margin-bottom: -84px;
+    width: 220px;
+}
+
+  #intervaloData table {
+        border-collapse: inherit;
+        text-align: center;
+  }
+
+    #intervaloData table tbody td {
+        
+    }

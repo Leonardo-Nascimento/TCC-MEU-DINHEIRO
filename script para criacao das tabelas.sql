@@ -17,19 +17,22 @@ CREATE TABLE Cliente
 
 
 CREATE TABLE Cliente_Movimentacao (
-  Cliente INT NOT NULL,
-  idTipoDespesa INT NOT NULL,
-  idDespesa INT not NULL,
-  idTipoReceita INT NOT NULL,
-  idReceita INT NOT NULL,
-  valorDespesa DECIMAL NOT NULL,
-  valorReceita DECIMAL NOT NULL,
-  DsDespesa VARCHAR (50) NOT NULL,
-  DsReceita VARCHAR (50) NOT NULL,
+  idCliente INT NOT NULL,
+  idTipoDespesa INT ,
+  idDespesa INT ,
+  idTipoReceita INT ,
+  idReceita INT ,
+  valorDespesa DECIMAL ,
+  valorReceita DECIMAL ,
+  DsDespesa VARCHAR (50) ,
+  DsReceita VARCHAR (50) ,
+  Data    DATE,
+  NomeConta VARCHAR(50),
+  TipoConta VARCHAR(50),
   
   
   CONSTRAINT fk_Cliente
-  FOREIGN KEY (Cliente)
+  FOREIGN KEY (idCliente)
   REFERENCES Cliente(idCliente),
   
   CONSTRAINT fk_idTipoDespesa

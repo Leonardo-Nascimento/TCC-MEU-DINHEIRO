@@ -74,8 +74,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 function selectoption(){
-
-  window.open('#modal1');
+    var valor = document.getElementById("opcao").value;
+    if (valor !== "2")
+        document.getElementById("intervaloData").style.display = 'none';
+    else
+        document.getElementById("intervaloData").style.display = 'block';
   
-
 }
+
+
+
