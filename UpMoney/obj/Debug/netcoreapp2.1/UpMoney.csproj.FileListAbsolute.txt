@@ -92,6 +92,7 @@ E:\TCC\TCC-MEU-DINHEIRO\UpMoney\bin\Debug\netcoreapp2.1\UpMoney.dll
 E:\TCC\TCC-MEU-DINHEIRO\UpMoney\bin\Debug\netcoreapp2.1\UpMoney.pdb
 E:\TCC\TCC-MEU-DINHEIRO\UpMoney\bin\Debug\netcoreapp2.1\UpMoney.Views.dll
 E:\TCC\TCC-MEU-DINHEIRO\UpMoney\bin\Debug\netcoreapp2.1\UpMoney.Views.pdb
+E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\UpMoney.csprojAssemblyReference.cache
 E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\UpMoney.csproj.CoreCompileInputs.cache
 E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\UpMoney.RazorAssemblyInfo.cache
 E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\UpMoney.RazorAssemblyInfo.cs
@@ -102,7 +103,11 @@ E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\UpMoney.TagHelpers.outpu
 E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\UpMoney.RazorCoreGenerate.cache
 E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
 E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\Razor\Views\Home\Sobre.g.cshtml.cs
+E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\Razor\Views\Receita\AdicionaReceita.g.cshtml.cs
+E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\Razor\Views\Receita\AdicionaTipo.g.cshtml.cs
+E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\Razor\Views\Receita\VerReceita.g.cshtml.cs
 E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
+E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Layout2.g.cshtml.cs
 E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
 E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
 E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\Razor\Views\Usuario\CadUsuario.g.cshtml.cs
@@ -116,4 +121,3 @@ E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\UpMoney.Views.pdb
 E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\UpMoney.dll
 E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\UpMoney.pdb
 E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\UpMoney.csproj.CopyComplete
-E:\TCC\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\Razor\Views\Usuario\teste.g.cshtml.cs

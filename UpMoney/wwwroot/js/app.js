@@ -74,13 +74,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 function selectoption(){
+  debugger
     var valor = document.getElementById("opcao").value;
+
     if (valor !== "2")
         document.getElementById("intervaloData").style.display = 'none';
     else
         document.getElementById("intervaloData").style.display = 'block';
+    
+        opcaoPesquisa(valor);
   
 }
 
+
+function opcaoPesquisa(numero){
+ 
+ alert("window.location.href = ../Receita/VerReceita/"+ numero);
+
+ window.location.href = "../Receita/VerReceita/" + parseInt(numero);
+
+  //href="../Receita/VerReceita";
+}
 
 

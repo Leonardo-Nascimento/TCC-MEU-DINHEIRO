@@ -18,9 +18,9 @@
             <table class="">
                 <tbody>
                     <tr>
-                        <td> <input type="text" class="datepicker" id="dtInicial" value=""> </td>
+                        <td> <input type="text" class="datepicker" asp-for="dtInicial" > </td>
                         <td>à </td>
-                        <td> <input type="text" class="datepicker" id="dtFinal" value=""> </td>
+                        <td> <input type="text" class="datepicker" asp-for="dtFinal" > </td>
                         <th></th>
                         <th><a href="#"><i class="material-icons" title="Despesa">search</i></a></th>
                     </tr>
@@ -30,11 +30,12 @@
 
         <div>
             <div class="input-field col s12" id="filtro">
-                <select onchange="selectoption()" id="opcao">
-                    <option value="1">Data</option>
+                <select onchange="selectoption()"  id="opcao">
+                    <option value="1" >Data</option>
                     <option value="2">Intervalo de Data</option>
                     <option value="3">Descrição</option>
-                    <option value="4">Valor</option>
+                    <option value="4">Valor Crescente</option>
+                    <option value="5">Valor Decrescente</option>
                 </select>
                 <label>Filtrar por:</label>
             </div>
