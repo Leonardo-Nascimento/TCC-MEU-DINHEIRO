@@ -151,21 +151,34 @@ INSERT INTO TipoReceita VALUES('Outras Receitas')
 
 SELECT * FROM TipoReceita AS tr
 
-DELETE FROM TipoReceita WHERE IdTipoReceita> 10
+--DELETE FROM TipoReceita WHERE IdTipoReceita> 5
 
 
 /*----------INSERINDO RECEITAS------------*/
 
 
-INSERT INTO Receitas(TipoReceita,ValorReceita,Data,DsReceita)VALUES(6,60,'07-02-2019','bolsa de valores')
+INSERT INTO Receitas(TipoReceita,ValorReceita,Data,DsReceita)VALUES(2,2400,'07-02-2019','Meu salário')
 
-INSERT INTO Receitas(TipoReceita,ValorReceita,Data,DsReceita)VALUES(7,2400,'07-02-2019','Meu salário')
+INSERT INTO Receitas(TipoReceita,ValorReceita,Data,DsReceita)VALUES(5,100,'07-02-2019','Conserto de pc')
 
-INSERT INTO Receitas(TipoReceita,ValorReceita,Data,DsReceita)VALUES(10,100,'07-02-2019','Conserto de pc')
+INSERT INTO Receitas(TipoReceita,ValorReceita,Data,DsReceita)VALUES(5,100,'07-02-2019','venda da peça da bike')
 
-INSERT INTO Receitas(TipoReceita,ValorReceita,Data,DsReceita)VALUES(8,200,'07-02-2019','Compra no cartão')
+--------------INSERT TIPO CONTA-----------------
 
-INSERT INTO Receitas(TipoReceita,ValorReceita,Data,DsReceita)VALUES(8,100,'07-02-2019','venda da peça da bike')
+INSERT INTO Conta
+(
+	-- idConta -- this column value is auto-generated
+	idCliente,
+	NomeConta,
+	TipoConta
+)
+VALUES
+(
+	1,
+	'Carteira',
+	'Pessoal'
+)
+
 
 
 SELECT * FROM Receitas AS r

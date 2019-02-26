@@ -68,7 +68,7 @@ using UpMoney.Models;
             WriteLiteral("\r\n<title>CadUsuario</title>\r\n\r\n");
             EndContext();
             BeginContext(79, 113, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "45a014a8fdb245039af23e755a7db43b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7c4a2ce2d35545ecbe3e5c24fe242f37", async() => {
                 BeginContext(143, 42, true);
                 WriteLiteral("\r\n    <!-- Input and Submit elements -->\r\n");
                 EndContext();
@@ -96,7 +96,7 @@ using UpMoney.Models;
             WriteLiteral("\r\n\r\n <center>\r\n\r\n    <div class=\"container\">\r\n        <div class=\"z-depth-1 grey lighten-4 row\" id=\"form-cadUsuario\">\r\n\r\n            ");
             EndContext();
             BeginContext(325, 1325, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4f24023ae2d24c129f1c7644c07eb3a9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "507a0148694f4128bac8a61529bd3985", async() => {
                 BeginContext(394, 1249, true);
                 WriteLiteral(@"                
 

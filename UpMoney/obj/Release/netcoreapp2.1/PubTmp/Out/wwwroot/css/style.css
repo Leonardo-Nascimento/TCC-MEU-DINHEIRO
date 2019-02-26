@@ -1,0 +1,179 @@
+
+/*------INDEX-----*/
+#nome {
+    color: blue;
+}
+
+.logo-home {
+    width: 80px;
+    height: 65px;
+}
+
+
+#menu-esquerda a {
+    /* padding-left: 10px; */
+    float: left;
+    /* margin-right: 20px; */
+}
+
+.titulo-nav {
+    margin-left: -30px;
+    font-size: 25px;
+    margin-top: 0px;
+}
+
+.navbar-fixed {
+    z-index: 900;
+}
+
+.parallax-container h2 {
+    margin-top: 200px;
+    text-align: center;
+    color: white;
+}
+
+.parallax-container {
+    width: 120% !important;
+    position: relative;
+    opacity: 0.95;
+    margin-top: 20px;
+    margin-left: -89px !important;  
+}
+
+
+#responsive-img{
+    height: 50%;
+    margin-top: 160px;
+    width:100px;
+}
+
+div#titulo-banner.container {
+    font-size: 40px !important;
+    width: 80% !important;
+}
+
+#titulo-banner {
+    opacity: 0.45;
+    width: 100%;
+    background-color:#080808db;
+    text-align:center;
+}
+
+
+
+/*-------LOGIN-------*/
+#form-login {
+    display: inline-block;
+    padding: 31px 40px 31px 40px;
+    border: 1px solid #EEE;
+    width: 45%;
+}
+
+#form-cadUsuario {
+    display: inline-block;
+    padding: 1px 25px 3px 25px;
+    border: 1px solid #EEE;
+    width: 45%;
+    margin-top: 2rem;
+}
+
+body{
+    background-color: #e0e0e0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    width: 100%;
+}
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  .logo-login {
+    width: 66px;
+    height: 61px;
+    margin-left: 85px;
+    /* align-items: center; */
+    margin-top: -25px;
+    margin-bottom: 8px;
+  }
+
+/*----------Menu Principal------------*/
+
+.navbar2 {   
+    width: 100%;    
+    border-radius: 50px;
+    margin-top: 5px;
+    height: 47px;
+}
+
+
+nav ul a.btn {
+    margin-top: -21px !important;
+    height: 30px !important;
+}
+
+nav ul a p {
+    margin-top: -2px;
+}
+
+ul#dropdown1 {
+    z-index: 1000;
+}
+
+  .navbar2 ul a:hover{
+    color: #fff;
+  }
+
+  .menuFixo ul{    
+    top: 65px;  
+    width: unset;  
+  }
+
+
+  #dropdown1{
+    top:100px !important;
+    margin-left: 0px;
+    margin-top: 60px;
+  }
+  
+  .collapsible-header #btnSair{
+    margin-left: 46px;
+    color:sienna;
+  }
+
+  /*----------Tabela de Receitas e Despesas------------*/
+
+  #grid{
+    background-color: white;
+
+  }
+
+  body #filtro{
+    width: 141px;
+  }
+
+  body #filtro ul{
+    top:40px !important;
+  }
+
+  #filtro ul li span{
+    font-size: 14px !important;
+  }
+
+#intervaloData {
+    margin-left: 200px;
+    margin-bottom: -84px;
+    width: 220px;
+}
+
+  #intervaloData table {
+        border-collapse: inherit;
+        text-align: center;
+  }
+
+    #intervaloData table tbody td {
+        
+    }
