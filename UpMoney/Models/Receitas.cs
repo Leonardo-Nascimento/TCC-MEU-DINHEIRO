@@ -68,6 +68,7 @@ namespace UpMoney.Models
             return true;
         }
 
+        //Mostra todas as Rceitas do Usuario logado
         public List<Receitas> ListaReceitas(int opcao = 0)
         {
 
@@ -80,55 +81,60 @@ namespace UpMoney.Models
 
             List<Receitas> lista = new List<Receitas>();
             Receitas item;
-            string condicao = "cm.Data";
+            string condicao = "r.Data";
+
 
             if (opcao == 1){
-                condicao = "cm.Data";
+                condicao = "r.Data";
             }
             else if(opcao == 3)
             {
-                condicao = "cm.DsReceita";
+                condicao = "r.DsReceita";
             }
             else if(opcao == 4)
             {
-                condicao = "cm.valorReceita ASC";
+                condicao = "r.valorReceita ASC";
             }
 
             else if (opcao == 5)
             {
-                condicao = "cm.valorReceita DESC";
+                condicao = "r.valorReceita DESC";
             }
 
             // AND cm.Data BETWEEN '20/02/2019' AND '20/02/2019'
 
-
+            
             string id_usuarioLogado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-            string sql = $" SELECT CONVERT(VARCHAR, cm.Data, 103) AS Data ,cm.DsReceita,tr.DsTipoReceita,cm.valorReceita,c.NomeConta,c.TipoConta" +
-                        $" FROM Cliente_Movimentacao AS cm" +
-                        $" JOIN TipoReceita AS tr" +
-                        $"  ON tr.idTipoReceita = cm.idTipoReceita" +
-                        $" JOIN Conta AS c" +
-                        $"  ON cm.idCliente = c.idCliente" +
-                        $" WHERE c.idCliente = {id_usuarioLogado}";
+            string sql = $" SELECT cm.idReceita,CONVERT(VARCHAR, r.[Data], 103) AS DATA,r.DsReceita,tr.DsTipoReceita,r.ValorReceita,c.NomeConta,c.TipoConta " +
+                         $" FROM Cliente_Movimentacao AS cm " +
+                         $" join Receitas AS r " +
+                         $" on cm.idReceita = r.idReceita" +
+                         $" JOIN TipoReceita AS tr" +
+                         $" ON tr.idTipoReceita = r.TipoReceita" +
+                         $" JOIN Conta AS c" +
+                         $" ON c.idCliente = cm.idCliente"; 
+                        //$" WHERE cm.idCliente = {id_usuarioLogado}";
 
                         if (opcao == 2 && (dtInicial != null && dtFinal != null ))
                         {
-                            sql = sql + " AND cm.Data BETWEEN '" + dtInicial + "' AND '" + dtFinal + "'";
+                            sql = sql + " AND r.Data BETWEEN '" + dtInicial + "' AND '" + dtFinal + "'";
                         }
                         else
                         {
 
                             sql = sql + " ORDER BY " + condicao;
                         }
+            try { 
 
-            DAL objDAL = new DAL();
-            DataTable dt = objDAL.RetDataTable(sql);
+                DAL objDAL = new DAL();
+                DataTable dt = objDAL.RetDataTable(sql);
 
-        
+
 
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     item = new Receitas();
+                    item.id = int.Parse(dt.Rows[i]["idReceita"].ToString());
                     item.dataReceita = dt.Rows[i]["Data"].ToString();
                     item.descricaoReceita = dt.Rows[i]["DsReceita"].ToString();
                     item.categoriaReceita = dt.Rows[i]["DsTipoReceita"].ToString();
@@ -139,10 +145,28 @@ namespace UpMoney.Models
                 }
 
 
-                return lista;
-         
+                
+
+            } catch(Exception e) {
+                    e.Message.ToString();
+            }
+
+            return lista;
         }
 
+        //Exclui a receita selecionada
+
+        public void ExcluirReceitas(int id)
+        {
+
+            string sql1 = $"DELETE FROM Cliente_Movimentacao WHERE idReceita =('{id}') ";
+
+            string sql2 = $"DELETE FROM Receitas WHERE idReceita = ('{id}') ";
+            DAL objDAL = new DAL();
+
+            objDAL.ExecutaComandoSQL(sql1);
+            objDAL.ExecutaComandoSQL(sql2);
+        }
 
 
 

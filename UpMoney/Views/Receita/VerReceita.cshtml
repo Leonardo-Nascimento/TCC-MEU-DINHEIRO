@@ -33,7 +33,7 @@
                 <select onchange="selectoption()"  id="opcao">
                     <option value="1" >Data</option>
                     <option value="2">Intervalo de Data</option>
-                    <option value="3">Descrição</option>
+                    <option value="3" >Descrição</option>
                     <option value="4">Valor Crescente</option>
                     <option value="5">Valor Decrescente</option>
                 </select>
@@ -58,6 +58,9 @@
                         <th>Valor</th>
                         <th>Conta</th>
                         <th>Tipo de Conta</th>
+                        <th>Opções</th>
+                        
+                        
                     </tr>
                 </thead>
 
@@ -67,71 +70,54 @@
                     foreach (var item in (List<Receitas>)ViewBag.ListaReceitas)
 
                     {
-                        <tbody>
+                        <tbody id="lista">
                             <tr>
 
+                                
+                                <td value=@item.id.ToString() data-id = @item.id.ToString() hidden></td> 
                                 <td>@item.dataReceita.ToString()</td>
                                 <td>@item.descricaoReceita.ToString()</td>
                                 <td>@item.categoriaReceita.ToString()</td>
                                 <td>@item.valor.ToString()</td>
                                 <td>@item.nomeConta.ToString()</td>
                                 <td>@item.tipoConta.ToString()</td>
+                                <td> <a href="#" onclick="ExcluirRceita(@item.id.ToString())"> <i class="material-icons" style="color: red" title="Deletar">delete</i> </a>  <a href="#"> <i class="material-icons" title="Editar">edit</i> </a></td>
 
-
-                                @*item = new Receitas();
-                                    item. = dt.Rows[i]["cm.Data"].ToString();
-                                    item. = dt.Rows[i]["cm.DsReceita"].ToString();
-                                    item. = dt.Rows[i]["DsTipoReceita"].ToString();
-                                    item. = decimal.Parse(dt.Rows[i]["cm.valorReceita"].ToString());
-                                    item. = dt.Rows[i]["c.NomeConta"].ToString();
-                                    item. = dt.Rows[i]["c.TipoConta"].ToString();*@
-
+                                    
 
                             </tr>
                         </tbody>
                     }
                 }
 
-
-
-                @*<tbody>
-                        <tr>
-                            <td>12/12/2019</td>
-                            <td>venda de peças</td>
-                            <td>venda</td>
-                            <td>$100</td>
-                            <td>carteira</td>
-                            <td>Pessoal</td>
-                        </tr>
-
-                        <tr>
-                            <td>19/02/2019</td>
-                            <td>extra</td>
-                            <td>sem categoria</td>
-                            <td>$500</td>
-                            <td>banco do brasil</td>
-                            <td>Pessoal</td>
-                        </tr>
-
-                        <tr>
-                            <td>28/01/2019</td>
-                            <td>extorno do cartão</td>
-                            <td>reembolso</td>
-                            <td>$480</td>
-                            <td>banco do bradesco</td>
-                            <td>Pessoal</td>
-                        </tr>
-
-                    </tbody>*@
             </table>
 
         </div>
+
+        
+
+        <div class="fixed-action-btn ">
+            <a class="btn-floating btn-large red ">
+                <i class="large material-icons ">add</i>
+            </a>
+            <ul>
+                <li><a class="btn-floating deep-purple darken-4"><i class="material-icons" title="Transação">swap_horiz</i></a></li>
+                <li><a class="btn-floating green"><i class="material-icons" title="Receita">publish</i></a></li>
+                <li><a class="btn-floating red"><i class="material-icons" title="Despesa">file_download</i></a></li>
+            </ul>
+        </div>
+
+    
+
     </main>
 
 
     <script>
 
-
+        <!-- var el  = getElementById("lista");
+        el.addEventListener('click', function(e) {
+        alert(e.target.id);
+       }); -->
     </script>
 
 

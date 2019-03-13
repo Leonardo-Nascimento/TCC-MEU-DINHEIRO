@@ -1,6 +1,6 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,6 +23,7 @@
     </environment>
 
 </head>
+
 <body>
 
     <nav class="blue darken-1 col s12">
@@ -46,106 +47,174 @@
     @using Microsoft.AspNetCore.Http;
     @inject IHttpContextAccessor HttpContextAccessor
 
-   
-        
 
 
-            <div class="menuFixo">
-                <ul id="slide-out" class="sidenav sidenav-fixed grey lighten-5">
 
-                    <ul class="collapsible collapsible-accordion" style="transform: translateX(0%);">
-                        <li>
-                            <div class="collapsible-header">
-                                <i class="material-icons green-text">publish</i>Receitas
-                            </div>
 
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="../Receita/AdicionaReceita">Adicionar Uma Nova</a></li>
-                                    <li><a href="#!">Adicionar Tipo</a></li>
-                                    <li><a href="../Receita/VerReceita">Ver Receitas</a></li>
-                                </ul>
-                            </div>
-                        </li>
+    <div class="menuFixo">
+        <ul id="slide-out" class="sidenav sidenav-fixed grey lighten-5">
 
-                        <li>
-                            <div class="collapsible-header">
-                                <i class="material-icons red-text">file_download</i>Despesas
-                            </div>
+            <ul class="collapsible collapsible-accordion" style="transform: translateX(0%);">
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons green-text">publish</i>Receitas
+                    </div>
 
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="#!">Adicionar Uma Nova</a></li>
-                                    <li><a href="#!">Adicionar Tipo</a></li>
-                                    <li><a href="#!">Ver Despesas</a></li>
-                                </ul>
-                            </div>
-                        </li>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#modal2" class="modal-trigger">Adicionar Uma Nova</a></li>
+                            <li><a href="#!">Adicionar Tipo</a></li>
+                            <li><a href="../Receita/VerReceita">Ver Receitas</a></li>
+                        </ul>
+                    </div>
+                </li>
 
-                        <li>
-                            <div class="collapsible-header">
-                                <i class="material-icons deep-purple-text ">swap_horiz</i>Transação
-                            </div>
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons red-text">file_download</i>Despesas
+                    </div>
 
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="#!">Adicionar Uma Nova</a></li>
-                                    <li><a href="#!">Adicionar Tipo</a></li>
-                                    <li><a href="#!">Ver Transações</a></li>
-                                </ul>
-                            </div>
-                        </li>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#!">Adicionar Uma Nova</a></li>
+                            <li><a href="#!">Adicionar Tipo</a></li>
+                            <li><a href="#!">Ver Despesas</a></li>
+                        </ul>
+                    </div>
+                </li>
 
-                        <li>
-                            <div class="collapsible-header">
-                                <i class="material-icons  ">monetization_on</i>Conta
-                            </div>
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons deep-purple-text ">swap_horiz</i>Transação
+                    </div>
 
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="#!">Adicionar Uma Nova</a></li>
-                                    <li><a href="#!">Adicionar Tipo</a></li>
-                                    <li><a href="#!">Ver Contas</a></li>
-                                </ul>
-                            </div>
-                        </li>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#!">Adicionar Uma Nova</a></li>
+                            <li><a href="#!">Adicionar Tipo</a></li>
+                            <li><a href="#!">Ver Transações</a></li>
+                        </ul>
+                    </div>
+                </li>
 
-                        <li>
-                            <div class="collapsible-header">
-                                <i class="material-icons orange-text lighten-3">filter_drama</i>  Sonhos
-                            </div>
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons  ">monetization_on</i>Conta
+                    </div>
 
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="#!">Adicionar Sonho</a></li>
-                                    <li><a href="#!">Ver Meus Sonhos</a></li>
-                                </ul>
-                            </div>
-                        </li>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#!">Adicionar Uma Nova</a></li>
+                            <li><a href="#!">Adicionar Tipo</a></li>
+                            <li><a href="#!">Ver Contas</a></li>
+                        </ul>
+                    </div>
+                </li>
 
-                        <li>
-                            <div class="collapsible-header">
-                                <i class="material-icons   blue-text">account_circle</i> Perfil
-                            </div>
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons orange-text lighten-3">filter_drama</i> Sonhos
+                    </div>
 
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="#!">Editar</a></li>
-                                </ul>
-                            </div>
-                        </li>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#!">Adicionar Sonho</a></li>
+                            <li><a href="#!">Ver Meus Sonhos</a></li>
+                        </ul>
+                    </div>
+                </li>
 
-                        <li>
-                            <div class="collapsible-header">
-                                <a href="#!" id="btnSair">  Sair </a>
-                            </div>
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons   blue-text">account_circle</i> Perfil
+                    </div>
 
-                        </li>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#!">Editar</a></li>
+                        </ul>
+                    </div>
+                </li>
 
-                    </ul>
+                <li>
+                    <div class="collapsible-header">
+                        <a href="#!" id="btnSair"> Sair </a>
+                    </div>
 
-                </ul>
+                </li>
+
+            </ul>
+
+        </ul>
+
+
+        <!-- Modal Structure -->
+        <div id="modal2" class="modal">
+            
+            <div class="modal-content" style="background-color: #81c784">
+            <h5>Entradas</h5>
+        </div>
+
+        <div class="row">
+            <form class="col s6">
+ 
+                <div class="row">
+                    <div class="input-field col s6">
+                        <!-- <p>Digite um Valor:</p> -->
+                        <input id="valor_inline" type="text" class="validate">
+                        <label for="valor_inline">Valor:</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input disabled value="I am not editable" id="disabled" type="text" class="validate">
+                        <label for="disabled">Disabled</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="descricao_inline" type="text" class="validate">
+                        <label for="descricao_inline">Descrição:</label>
+                    </div>
+                </div>
+
+                <select>
+                    <option value="" disabled selected>Selecione uma opção</option>
+                    <option value="1">Salário</option>
+                    <option value="2">Outras Rendas</option>
+                    <option value="3">Reembolso</option>
+                    <option value="3">Estorno</option>
+                </select>
+                <label>Tipo de Receita</label>
+
+
+
+                <div class="row">
+                    <div class="col s12">
+                        This is an inline input field:
+                        <div class="input-field inline">
+                            <input id="email_inline" type="email" class="validate">
+                            <label for="email_inline">Email</label>
+                            <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+
+
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Adicionar</a>
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
             </div>
+        
+        
+        </div>
+    </div>
 
 
 

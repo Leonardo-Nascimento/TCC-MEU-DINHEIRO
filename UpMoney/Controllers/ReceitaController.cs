@@ -42,6 +42,18 @@ namespace UpMoney.Controllers
             //return RedirectToAction("VerReceita");
         }
 
+        [HttpGet]
+        public IActionResult ExcluirReceita(int id)
+        {
+            var numero = id;
+            Receitas objReceita = new Receitas(HttpContextAccessor);
+            objReceita.ExcluirReceitas(id);
+
+
+
+            return RedirectToAction("VerReceita");
+        }
+
 
         public IActionResult AdicionaReceita()
         {

@@ -21,14 +21,7 @@ CREATE TABLE Cliente_Movimentacao (
   idTipoDespesa INT ,
   idDespesa INT ,
   idTipoReceita INT ,
-  idReceita INT ,
-  valorDespesa DECIMAL ,
-  valorReceita DECIMAL ,
-  DsDespesa VARCHAR (50) ,
-  DsReceita VARCHAR (50) ,
-  Data    DATE,
-  NomeConta VARCHAR(50),
-  TipoConta VARCHAR(50),
+  idReceita INT 
   
   
   CONSTRAINT fk_Cliente
