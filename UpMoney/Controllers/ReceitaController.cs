@@ -24,7 +24,6 @@ namespace UpMoney.Controllers
         public IActionResult VerReceita()
         {
 
-
             Receitas objReceita = new Receitas(HttpContextAccessor);
             ViewBag.ListaReceitas = objReceita.ListaReceitas();
             return View();
@@ -55,10 +54,25 @@ namespace UpMoney.Controllers
         }
 
 
-        public IActionResult AdicionaReceita()
+        //public IActionResult Registrar(UsuarioModel usuario)
+        //{
+        //    //Registra o Usuário
+        //    if (ModelState.IsValid)
+        //    {
+        //        usuario.RegistrarUsuario();
+        //        return RedirectToAction("Sucesso");
+        //    }
+        //    return View();
+        //}
+
+        [HttpPost]
+        public IActionResult AdicionaReceita(Receitas receita)
         {
+            receita.RegistrarReceita();
             return View();
         }
+
+
 
 
         public IActionResult AdicionaTipo()

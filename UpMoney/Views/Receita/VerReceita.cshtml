@@ -71,19 +71,15 @@
 
                     {
                         <tbody id="lista">
-                            <tr>
-
-                                
+                            <tr>                                
                                 <td value=@item.id.ToString() data-id = @item.id.ToString() hidden></td> 
                                 <td>@item.dataReceita.ToString()</td>
-                                <td>@item.descricaoReceita.ToString()</td>
+                                <td>@item.descricaoTipoReceita.ToString()</td>
                                 <td>@item.categoriaReceita.ToString()</td>
                                 <td>@item.valor.ToString()</td>
                                 <td>@item.nomeConta.ToString()</td>
                                 <td>@item.tipoConta.ToString()</td>
-                                <td> <a href="#" onclick="ExcluirRceita(@item.id.ToString())"> <i class="material-icons" style="color: red" title="Deletar">delete</i> </a>  <a href="#"> <i class="material-icons" title="Editar">edit</i> </a></td>
-
-                                    
+                                <td> <a href="#" onclick="ExcluirRceita(@item.id.ToString())"> <i class="material-icons" style="color: red" title="Deletar">delete</i> </a>  <a href="#"> <i class="material-icons" title="Editar">edit</i> </a></td>                                    
 
                             </tr>
                         </tbody>
@@ -114,10 +110,6 @@
 
     <script>
 
-        <!-- var el  = getElementById("lista");
-        el.addEventListener('click', function(e) {
-        alert(e.target.id);
-       }); -->
     </script>
 
 

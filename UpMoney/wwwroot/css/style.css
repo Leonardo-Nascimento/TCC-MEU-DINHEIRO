@@ -177,3 +177,38 @@ ul#dropdown1 {
     #intervaloData table tbody td {
         
     }
+
+    #valor_inline input[type=text]:focus{
+      box-shadow: 0 1px 0 0 #000;
+    }
+
+
+    #formAddReceita{
+      width: 97%;
+    }
+
+    .dataReceita{
+      width: 130px;
+    }
+
+    #modal2{
+      width: 25%;
+      height: 70%;
+    }
+
+    .opcoesBtn{
+      margin-top: 122px;
+      margin-left: 27%;
+    }
+
+    .datepicker-date-display {
+      display: none;
+  }
+
+ .modal.datepicker-modal.open.modal-content.datepicker-container{
+   width: 50% !important;
+
+  }
+  #btnSalvar{
+    margin-right: 20px;
+  }

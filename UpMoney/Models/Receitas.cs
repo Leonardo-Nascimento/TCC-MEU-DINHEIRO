@@ -9,15 +9,16 @@ using UpMoney.Util;
 
 namespace UpMoney.Models
 {
-    public class Receitas
-    {
-
-        
+    public class Receitas: TipoReceita
+    {        
 
         [Required(ErrorMessage = "preencha os campos")]
         public int id { get; set; }
 
-        public int idTipoReceita {get;set;}
+        public TipoReceita idTipoReceita { get;set;}
+        public TipoReceita descricaoTipoReceita { get; set; }
+
+        public string descricaoReceita { get; set; }
 
         public string dataReceita {get;set;}
 
@@ -25,9 +26,7 @@ namespace UpMoney.Models
 
         public string dtFinal { get; set; }
 
-        public decimal valor { get; set; }
-
-        public string descricaoReceita { get; set; }
+        public decimal valor { get; set; }        
 
         public string categoriaReceita { get; set; }
 
@@ -134,10 +133,10 @@ namespace UpMoney.Models
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     item = new Receitas();
+                    TipoReceita tipo = new TipoReceita();
                     item.id = int.Parse(dt.Rows[i]["idReceita"].ToString());
                     item.dataReceita = dt.Rows[i]["Data"].ToString();
-                    item.descricaoReceita = dt.Rows[i]["DsReceita"].ToString();
-                    item.categoriaReceita = dt.Rows[i]["DsTipoReceita"].ToString();
+                    item.descricaoTipoReceita = (TipoReceita) dt.Rows[i]["DsReceita"].ToString();
                     item.valor = decimal.Parse(dt.Rows[i]["valorReceita"].ToString());
                     item.nomeConta = dt.Rows[i]["NomeConta"].ToString();
                     item.tipoConta = dt.Rows[i]["TipoConta"].ToString();
@@ -170,5 +169,15 @@ namespace UpMoney.Models
 
 
 
+
+        public void RegistrarReceita()
+        {
+            
+            string sql = $"INSERT INTO Receitas(TipoReceita,Data,DsReceita,ValorReceita) VALUES ( { descricaoTipoReceita }, { dataReceita }, { descricaoReceita }, { valor } )";
+            DAL objDAL = new DAL();
+            objDAL.ExecutaComandoSQL(sql);
+
+
+        }
     }
 }

@@ -15,11 +15,13 @@
         <!--Import materialize.css-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link rel="stylesheet" href="~/css/style.css">
+        <link rel="stylesheet" href="~/css/style-calculadora.css">
 
         <!--Import Jquery e JavaScript-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="~/js/app.js"></script>
+        
     </environment>
 
 </head>
@@ -149,29 +151,25 @@
 
 
         <!-- Modal Structure -->
-        <div id="modal2" class="modal">
+        <div id="modal2" class="modal" >
             
             <div class="modal-content" style="background-color: #81c784">
             <h5>Entradas</h5>
         </div>
 
         <div class="row">
-            <form class="col s6">
- 
+
+            <form class="col s6 " id="formAddReceita" asp-controller="Receitas" asp-action="AdicionaReceita" >
+
                 <div class="row">
                     <div class="input-field col s6">
                         <!-- <p>Digite um Valor:</p> -->
-                        <input id="valor_inline" type="text" class="validate">
+                        <input id="valor_inline" type="text" class="validate" name="valor">
                         <label for="valor_inline">Valor:</label>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-                        <label for="disabled">Disabled</label>
-                    </div>
-                </div>
+                
 
                 <div class="row">
                     <div class="input-field col s12">
@@ -180,40 +178,40 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <input type="text" class="datepicker" id="dtReceita" value="">
+                </div>
+                
                 <select>
-                    <option value="" disabled selected>Selecione uma opção</option>
+                    <option value="" disabled selected>Selecione o Tipo de Receita</option>
                     <option value="1">Salário</option>
                     <option value="2">Outras Rendas</option>
                     <option value="3">Reembolso</option>
                     <option value="3">Estorno</option>
                 </select>
-                <label>Tipo de Receita</label>
 
+              
+                
 
-
-                <div class="row">
-                    <div class="col s12">
-                        This is an inline input field:
-                        <div class="input-field inline">
-                            <input id="email_inline" type="email" class="validate">
-                            <label for="email_inline">Email</label>
-                            <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
-                        </div>
-                    </div>
+                <div class="opcoesBtn">
+                    <button type="submit" class=" waves-effect waves-green btn" id="btnSalvar">Salvar</button>
+                    <a href="#!" class="modal-close waves-effect waves-effect btn background-color: red" id="btnCancelar">Cancelar</a>
                 </div>
-
             </form>
-        </div>
+            
+        </div>               
+                            
+               
+             
 
 
 
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Adicionar</a>
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-            </div>
+            
         
         
-        </div>
+    
+
+
     </div>
 
 
@@ -229,9 +227,110 @@
     </div>
 
     <script>
-        function CarregarUsuarioLogado() {
+    document.getElementById('valor_inline').focus();
 
-        }
+    document.querySelector("[id='valor_inline']").focus();
+
+   
+    /*-----------------------------------------CALCULADORA----------------------------------------------------------*/
+// pego os elementos li e div input
+var btn 	  = document.querySelectorAll(".key li"),
+	input 	  = document.querySelector(".input-valor"),
+	operador  = document.querySelectorAll(".operador");
+
+// Percorro o array para usar todas as informações
+for(var i = 0; i < btn.length; i++){
+	document.onkeypress = function(){
+		var key = event.keyCode;
+		//console.log(key);
+		for(var e = 0; e <= 10; e++){
+			if(key === (48+e)){
+                debugger
+				input.innerHTML += e;
+                document.querySelector("[id='valor_inline']").value += e;
+			}
+		}
+		switch (key){
+			case 42:
+				input.innerHTML += "*";
+                document.querySelector("[id='valor_inline']").value = input.innerText;
+				break;
+			case 43:
+				input.innerHTML += "+";
+                document.querySelector("[id='valor_inline']").value = input.innerText;
+				break;
+			case 45:
+				input.innerHTML += "-";
+                document.querySelector("[id='valor_inline']").value = input.innerText;
+				break;
+			case 46:
+				input.innerHTML += ".";
+                document.querySelector("[id='valor_inline']").value = input.innerText;
+				break;
+			case 47:
+				input.innerHTML += "/";
+                document.querySelector("[id='valor_inline']").value = input.innerText;
+				break;
+			case 13:
+			case 61:
+				var equacao = input.innerHTML;
+				if(equacao){
+					try {
+                        debugger
+						input.innerHTML = eval(equacao);
+                        document.querySelector("[id='valor_inline']").value = eval(equacao);
+					} catch (e) {
+						alert('Erro na expressão');
+
+					} 
+				}
+				break;
+			case 67:
+			case 99:
+				input.innerHTML = "";
+				break;						
+			default:
+				//console.log("Procurando erros?");
+				break;
+		}
+	};
+	btn[i].addEventListener('click',function(){
+		var btnVal 	 = this.innerHTML,
+			inputVal = input.innerHTML;
+		//console.log(btnVal);
+
+		// crio um clear caso o c for clicado
+		switch (btnVal){
+			case "c":
+            debugger
+				input.innerHTML = "";
+                document.querySelector("[id='valor_inline']").value = "";
+				break;
+			case "=":
+				// Crio a variável de equação aqui eu utilizo a função eval do javascript
+				var equacao = inputVal;
+				
+				if(equacao){
+					try {
+                        debugger
+						input.innerHTML = eval(equacao);
+                        document.querySelector("[id='valor_inline']").value = eval(equacao);
+					} catch (e) {
+						alert('Erro na expressão');
+
+					} 
+				}
+				break;
+			default:
+				input.innerHTML += btnVal;
+               
+                document.querySelector("[id='valor_inline']").value += btnVal;
+				break;	
+		}
+
+	});
+}
+
     </script>
 
 </body>
