@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -21,7 +23,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="~/js/app.js"></script>
-        
+
     </environment>
 
 </head>
@@ -151,190 +153,164 @@
 
 
         <!-- Modal Structure -->
-        <div id="modal2" class="modal" >
-            
+        <div id="modal2" class="modal">
+
             <div class="modal-content" style="background-color: #81c784">
-            <h5>Entradas</h5>
+                <h5>Entradas</h5>
+            </div>
+
+            <div class="row">
+
+                <form class="col s6 " id="formAddReceita" asp-controller="Receita" asp-action="AdicionaReceita" method="post">
+
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <!-- <p>Digite um Valor:</p> -->
+                            <input id="valor_inline" type="text" class="validate" name="valor">
+
+                            <label for="valor_inline">Valor:</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="descricao_inline" type="text" class="validate" name="descricaoReceita">
+                            <label for="descricao_inline">Descrição:</label>
+                        </div>
+                    </div>
+
+                    <div class="row" id="divDataPicker">
+                        <input type="text" class="datepicker" id="dtReceita" value="" name="dataReceita">
+                    </div>
+
+                    <select id="cb_tipoReceita" name="tipoReceita">
+                        <option value="" disabled selected>Selecione o Tipo de Receita</option>
+                        <option value="">Salário</option>
+                        <option value="Outras Rendas">Outras Rendas</option>
+                        <option value="">Reembolso</option>
+                        <option value="">Estorno</option>
+                    </select>
+
+                    <div class="opcoesBtn">
+                        <button type="submit" class=" waves-effect waves-green btn" id="btnSalvar">Salvar</button>
+                        <a href="#!" class="modal-close waves-effect waves-effect btn background-color: red" id="btnCancelar">Cancelar</a>
+                    </div>
+                </form>
+
+            </div>
+
         </div>
 
-        <div class="row">
+        <div class="container body-content">
+            @RenderBody()
+        </div>
 
-            <form class="col s6 " id="formAddReceita" asp-controller="Receitas" asp-action="AdicionaReceita" >
+        <script>
 
-                <div class="row">
-                    <div class="input-field col s6">
-                        <!-- <p>Digite um Valor:</p> -->
-                        <input id="valor_inline" type="text" class="validate" name="valor">
-                        <label for="valor_inline">Valor:</label>
-                    </div>
-                </div>
+            document.getElementById('valor_inline').focus();
 
-                
-
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="descricao_inline" type="text" class="validate">
-                        <label for="descricao_inline">Descrição:</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <input type="text" class="datepicker" id="dtReceita" value="">
-                </div>
-                
-                <select>
-                    <option value="" disabled selected>Selecione o Tipo de Receita</option>
-                    <option value="1">Salário</option>
-                    <option value="2">Outras Rendas</option>
-                    <option value="3">Reembolso</option>
-                    <option value="3">Estorno</option>
-                </select>
-
-              
-                
-
-                <div class="opcoesBtn">
-                    <button type="submit" class=" waves-effect waves-green btn" id="btnSalvar">Salvar</button>
-                    <a href="#!" class="modal-close waves-effect waves-effect btn background-color: red" id="btnCancelar">Cancelar</a>
-                </div>
-            </form>
-            
-        </div>               
-                            
-               
-             
+            document.querySelector("[id='valor_inline']").focus();
 
 
+            /*-----------------------------------------CALCULADORA----------------------------------------------------------*/
+            // pego os elementos li e div input
+            var btn = document.querySelectorAll(".key li"),
+                input = document.querySelector(".input-valor"),
+                operador = document.querySelectorAll(".operador");
 
-            
-        
-        
-    
+            // Percorro o array para usar todas as informações
+            for (var i = 0; i < btn.length; i++) {
+                document.onkeypress = function () {
+                    var key = event.keyCode;
+                    //console.log(key);
+                    for (var e = 0; e <= 10; e++) {
+                        if (key === (48 + e)) {
+                            debugger
+                            input.innerHTML += e;
+                            document.querySelector("[id='valor_inline']").value += e;
+                        }
+                    }
+                    switch (key) {
+                        case 42:
+                            input.innerHTML += "*";
+                            document.querySelector("[id='valor_inline']").value = input.innerText;
+                            break;
+                        case 43:
+                            input.innerHTML += "+";
+                            document.querySelector("[id='valor_inline']").value = input.innerText;
+                            break;
+                        case 45:
+                            input.innerHTML += "-";
+                            document.querySelector("[id='valor_inline']").value = input.innerText;
+                            break;
+                        case 46:
+                            input.innerHTML += ".";
+                            document.querySelector("[id='valor_inline']").value = input.innerText;
+                            break;
+                        case 47:
+                            input.innerHTML += "/";
+                            document.querySelector("[id='valor_inline']").value = input.innerText;
+                            break;
+                        case 13:
+                        case 61:
+                            var equacao = input.innerHTML;
+                            if (equacao) {
+                                try {
+                                    debugger
+                                    input.innerHTML = eval(equacao);
+                                    document.querySelector("[id='valor_inline']").value = eval(equacao);
+                                } catch (e) {
+                                    alert('Erro na expressão');
 
+                                }
+                            }
+                            break;
+                        case 67:
+                        case 99:
+                            input.innerHTML = "";
+                            break;
+                        default:
+                            //console.log("Procurando erros?");
+                            break;
+                    }
+                };
+                btn[i].addEventListener('click', function () {
+                    var btnVal = this.innerHTML,
+                        inputVal = input.innerHTML;
+                    //console.log(btnVal);
 
-    </div>
+                    // crio um clear caso o c for clicado
+                    switch (btnVal) {
+                        case "c":
+                            debugger
+                            input.innerHTML = "";
+                            document.querySelector("[id='valor_inline']").value = "";
+                            break;
+                        case "=":
+                            // Crio a variável de equação aqui eu utilizo a função eval do javascript
+                            var equacao = inputVal;
 
+                            if (equacao) {
+                                try {
+                                    debugger
+                                    input.innerHTML = eval(equacao);
+                                    document.querySelector("[id='valor_inline']").value = eval(equacao);
+                                } catch (e) {
+                                    alert('Erro na expressão');
 
+                                }
+                            }
+                            break;
+                        default:
+                            input.innerHTML += btnVal;
 
+                            document.querySelector("[id='valor_inline']").value += btnVal;
+                            break;
+                    }
 
+                });
+            }
 
-
-
-    <div class="container body-content">
-        @RenderBody()
-
-
-    </div>
-
-    <script>
-    document.getElementById('valor_inline').focus();
-
-    document.querySelector("[id='valor_inline']").focus();
-
-   
-    /*-----------------------------------------CALCULADORA----------------------------------------------------------*/
-// pego os elementos li e div input
-var btn 	  = document.querySelectorAll(".key li"),
-	input 	  = document.querySelector(".input-valor"),
-	operador  = document.querySelectorAll(".operador");
-
-// Percorro o array para usar todas as informações
-for(var i = 0; i < btn.length; i++){
-	document.onkeypress = function(){
-		var key = event.keyCode;
-		//console.log(key);
-		for(var e = 0; e <= 10; e++){
-			if(key === (48+e)){
-                debugger
-				input.innerHTML += e;
-                document.querySelector("[id='valor_inline']").value += e;
-			}
-		}
-		switch (key){
-			case 42:
-				input.innerHTML += "*";
-                document.querySelector("[id='valor_inline']").value = input.innerText;
-				break;
-			case 43:
-				input.innerHTML += "+";
-                document.querySelector("[id='valor_inline']").value = input.innerText;
-				break;
-			case 45:
-				input.innerHTML += "-";
-                document.querySelector("[id='valor_inline']").value = input.innerText;
-				break;
-			case 46:
-				input.innerHTML += ".";
-                document.querySelector("[id='valor_inline']").value = input.innerText;
-				break;
-			case 47:
-				input.innerHTML += "/";
-                document.querySelector("[id='valor_inline']").value = input.innerText;
-				break;
-			case 13:
-			case 61:
-				var equacao = input.innerHTML;
-				if(equacao){
-					try {
-                        debugger
-						input.innerHTML = eval(equacao);
-                        document.querySelector("[id='valor_inline']").value = eval(equacao);
-					} catch (e) {
-						alert('Erro na expressão');
-
-					} 
-				}
-				break;
-			case 67:
-			case 99:
-				input.innerHTML = "";
-				break;						
-			default:
-				//console.log("Procurando erros?");
-				break;
-		}
-	};
-	btn[i].addEventListener('click',function(){
-		var btnVal 	 = this.innerHTML,
-			inputVal = input.innerHTML;
-		//console.log(btnVal);
-
-		// crio um clear caso o c for clicado
-		switch (btnVal){
-			case "c":
-            debugger
-				input.innerHTML = "";
-                document.querySelector("[id='valor_inline']").value = "";
-				break;
-			case "=":
-				// Crio a variável de equação aqui eu utilizo a função eval do javascript
-				var equacao = inputVal;
-				
-				if(equacao){
-					try {
-                        debugger
-						input.innerHTML = eval(equacao);
-                        document.querySelector("[id='valor_inline']").value = eval(equacao);
-					} catch (e) {
-						alert('Erro na expressão');
-
-					} 
-				}
-				break;
-			default:
-				input.innerHTML += btnVal;
-               
-                document.querySelector("[id='valor_inline']").value += btnVal;
-				break;	
-		}
-
-	});
-}
-
-    </script>
+        </script>
 
 </body>
-
-
-
 </html>

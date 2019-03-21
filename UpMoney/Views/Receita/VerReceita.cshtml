@@ -6,12 +6,6 @@
 @model Receitas
 <h2>Receitas</h2>
 
-
-
-
-
-
-
 <body>
     <main>
         <div id="intervaloData" style="display: none;">
@@ -43,10 +37,6 @@
 
 
 
-
-
-
-
         <div id="grid">
 
             <table class="highlight centered" id="grid">
@@ -65,7 +55,6 @@
                 </thead>
 
 
-
                 @{
                     foreach (var item in (List<Receitas>)ViewBag.ListaReceitas)
 
@@ -74,7 +63,7 @@
                             <tr>                                
                                 <td value=@item.id.ToString() data-id = @item.id.ToString() hidden></td> 
                                 <td>@item.dataReceita.ToString()</td>
-                                <td>@item.descricaoTipoReceita.ToString()</td>
+                                <td>@item.tipoReceita.ToString()</td>
                                 <td>@item.categoriaReceita.ToString()</td>
                                 <td>@item.valor.ToString()</td>
                                 <td>@item.nomeConta.ToString()</td>
@@ -102,7 +91,6 @@
                 <li><a class="btn-floating red"><i class="material-icons" title="Despesa">file_download</i></a></li>
             </ul>
         </div>
-
     
 
     </main>
@@ -111,9 +99,6 @@
     <script>
 
     </script>
-
-
-
 
 
 </body>

@@ -54,25 +54,12 @@ namespace UpMoney.Controllers
         }
 
 
-        //public IActionResult Registrar(UsuarioModel usuario)
-        //{
-        //    //Registra o Usuário
-        //    if (ModelState.IsValid)
-        //    {
-        //        usuario.RegistrarUsuario();
-        //        return RedirectToAction("Sucesso");
-        //    }
-        //    return View();
-        //}
-
         [HttpPost]
-        public IActionResult AdicionaReceita(Receitas receita)
+        public IActionResult AdicionaReceita( Receitas receita)
         {
             receita.RegistrarReceita();
             return View();
         }
-
-
 
 
         public IActionResult AdicionaTipo()
