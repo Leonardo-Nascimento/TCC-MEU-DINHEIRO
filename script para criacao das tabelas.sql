@@ -2,6 +2,8 @@
  * Code formatted by SoftTree SQL Assistant © v7.5.502
  * Time: 01/11/2018 08:55:30
  ************************************************************/
+USE BDCADASTRO
+
 
 CREATE TABLE Cliente
 (
@@ -106,7 +108,7 @@ CREATE TABLE Receitas (
 
 
 CREATE TABLE Tipo_Orçamento (
-  idTipoOrçamento INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  idTipoOrçamento INT NOT NULL AUTO_INCREMENT,
   Tipo__despesa_idTipoDespesa INTEGER UNSIGNED NOT NULL,
   DsTipoOrçamento VARCHAR NULL,
   PRIMARY KEY(idTipoOrçamento),
@@ -117,37 +119,36 @@ CREATE TABLE Tipo_Orçamento (
 
 CREATE TABLE TipoReceita (
   IdTipoReceita INT IDENTITY(1, 1) PRIMARY KEY NOT NULL,
-  DsTipoReceita VARCHAR(50),  
+  tipoReceitaIdCliente INT,
+  DsTipoReceita VARCHAR(50), 
 );
 
 
 
 CREATE TABLE TipoDespesa (
   idTipoDespesa INT IDENTITY(1, 1) PRIMARY KEY NOT NULL,
-  DsTipoDespesa VARCHAR (50),  
-);
+  tipoDespesaIdCliente INT ,
+  DsTipoDespesa VARCHAR (50),
+  
+  );
 
 
 
-/*----------INSERINDO TIPOS DE RECEITA------------*/
+--/*----------INSERINDO TIPOS DE RECEITA------------*/
 
-INSERT INTO TipoReceita VALUES('Investimentos')
+INSERT INTO TipoReceita VALUES(NULL,'Investimentos')
 
-INSERT INTO TipoReceita VALUES('Salário')
+INSERT INTO TipoReceita VALUES(NULL,'Salário')
 
-INSERT INTO TipoReceita VALUES('Reembolso')
+INSERT INTO TipoReceita VALUES(NULL,'Reembolso'
 
-INSERT INTO TipoReceita VALUES('Estorno')
+INSERT INTO TipoReceita VALUES(NULL,'Estorno')
 
-INSERT INTO TipoReceita VALUES('Outras Receitas')
-
-
-SELECT * FROM TipoReceita AS tr
-
---DELETE FROM TipoReceita WHERE IdTipoReceita> 5
+INSERT INTO TipoReceita VALUES(NULL,'Outras Receitas')
 
 
-/*----------INSERINDO RECEITAS------------*/
+
+--/*----------INSERINDO RECEITAS------------*/
 
 
 INSERT INTO Receitas(TipoReceita,ValorReceita,Data,DsReceita)VALUES(2,2400,'07-02-2019','Meu salário')
@@ -156,7 +157,7 @@ INSERT INTO Receitas(TipoReceita,ValorReceita,Data,DsReceita)VALUES(5,100,'07-02
 
 INSERT INTO Receitas(TipoReceita,ValorReceita,Data,DsReceita)VALUES(5,100,'07-02-2019','venda da peça da bike')
 
---------------INSERT TIPO CONTA-----------------
+----------------INSERT TIPO CONTA-----------------
 
 INSERT INTO Conta
 (
@@ -174,8 +175,4 @@ VALUES
 
 
 
-SELECT * FROM Receitas AS r
-
-
-ALTER TABLE Receitas ALTER COLUMN DsReceita VARCHAR(50)  
-GO 
+-

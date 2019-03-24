@@ -9,7 +9,7 @@ using UpMoney.Util;
 
 namespace UpMoney.Models
 {
-    public class Receitas : TipoReceita
+    public class ReceitasModel : TipoReceitaModel
     {
 
         [Required(ErrorMessage = "preencha os campos")]
@@ -39,13 +39,13 @@ namespace UpMoney.Models
         public IHttpContextAccessor HttpContextAccessor { get; set; }
 
 
-        public Receitas()
+        public ReceitasModel()
         {
 
         }
 
         //Recebe o contexto para acesso as variaveis de sessao
-        public Receitas(IHttpContextAccessor httpContextAccessor)
+        public ReceitasModel(IHttpContextAccessor httpContextAccessor)
         {
             HttpContextAccessor = httpContextAccessor;
 
@@ -68,7 +68,7 @@ namespace UpMoney.Models
         }
 
         //Mostra todas as Rceitas do Usuario logado
-        public List<Receitas> ListaReceitas(int opcao = 0)
+        public List<ReceitasModel> ListaReceitas(int opcao = 0)
         {
 
             //opção "1" = Data
@@ -78,8 +78,8 @@ namespace UpMoney.Models
             //opção "5" = Valor Decrescente
 
 
-            List<Receitas> lista = new List<Receitas>();
-            Receitas item;
+            List<ReceitasModel> lista = new List<ReceitasModel>();
+            ReceitasModel item;
             string condicao = "r.Data";
 
 
@@ -111,8 +111,8 @@ namespace UpMoney.Models
                          $" JOIN TipoReceita AS tr" +
                          $" ON tr.idTipoReceita = r.TipoReceita" +
                          $" JOIN Conta AS c" +
-                         $" ON c.idCliente = cm.idCliente"; 
-                        //$" WHERE cm.idCliente = {id_usuarioLogado}";
+                         $" ON c.idCliente = cm.idCliente"+ 
+                         $" WHERE cm.idCliente = {id_usuarioLogado}";
 
                         if (opcao == 2 && (dtInicial != null && dtFinal != null ))
                         {
@@ -132,11 +132,12 @@ namespace UpMoney.Models
 
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    item = new Receitas();
-                    TipoReceita tipo = new TipoReceita();
+                    item = new ReceitasModel();
+                    TipoReceitaModel tipo = new TipoReceitaModel();
                     item.id = int.Parse(dt.Rows[i]["idReceita"].ToString());
                     item.dataReceita = dt.Rows[i]["Data"].ToString();
                     item.tipoReceita = dt.Rows[i]["DsReceita"].ToString();
+                    item.categoriaReceita = dt.Rows[i]["DsTipoReceita"].ToString();
                     item.valor = decimal.Parse(dt.Rows[i]["valorReceita"].ToString());
                     item.nomeConta = dt.Rows[i]["NomeConta"].ToString();
                     item.tipoConta = dt.Rows[i]["TipoConta"].ToString();
@@ -172,12 +173,57 @@ namespace UpMoney.Models
 
         public void RegistrarReceita()
         {
-            
-            string sql = $"INSERT INTO Receitas(TipoReceita,Data,DsReceita,ValorReceita) VALUES ( { tipoReceita }, { dataReceita }, { descricaoReceita }, { valor } )";
-            DAL objDAL = new DAL();
-            objDAL.ExecutaComandoSQL(sql);
+            string id_usuarioLogado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+            bool inserido = false;
+            string sql = $"INSERT INTO Receitas(TipoReceita,Data,DsReceita,ValorReceita) VALUES ( { tipoReceita }, '{ dataReceita }', '{ descricaoReceita }', { valor } )";
+
+            try
+            {
+                DAL objDAL = new DAL();
+                objDAL.ExecutaComandoSQL(sql);
+                inserido = true;
+
+            }catch (Exception e)
+            {
+                e.Message.ToString();
+            }
+
+            if (inserido) {
+                try
+                {
+                    string sql2 = $" INSERT INTO Cliente_Movimentacao " +
+                                  $"  ( " +
+                                  $"    [idCliente]," +
+                                  $"    [idTipoDespesa]," +
+                                  $"    [idDespesa]," +
+                                  $"    [idTipoReceita]," +
+                                  $"    [idReceita]" +
+                                  $"  )" +
+                                  $"   SELECT tr.tipoReceitaIdCliente  AS idCliente," +
+                                  $"          NULL AS idTipoDespesa," +
+                                  $"          NULL AS idDespesa," +
+                                  $"          tr.idTipoReceita AS idTipoReceita," +
+                                  $"          idReceita AS idReceita" +
+                                  $"   FROM   Receitas AS r" +
+                                  $"          JOIN TipoReceita AS tr" +
+                                  $"               ON  tr.idTipoReceita = r.TipoReceita" +
+                                  $"   WHERE tr.tipoReceitaIdCliente = {id_usuarioLogado}" +                                  
+                                  $"         AND r.idReceita IN (SELECT idReceita" +
+                                  $"                          FROM   Receitas AS r2" +
+                                  $"                          WHERE  r2.TipoReceita = { tipoReceita }" +
+                                  $"                                 AND CONVERT(VARCHAR, r2.[Data], 103) = '{ dataReceita }')";
 
 
+                    DAL objDAL = new DAL();
+                    objDAL.ExecutaComandoSQL(sql2);
+
+                }
+                catch (Exception e)
+                {
+                    e.Message.ToString();
+                }
+
+            }
         }
     }
 }

@@ -1,6 +1,16 @@
 ﻿
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    var id = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+    //Session.SetString("IdUsuarioLogado", nome);
+
+
+}
 
 <!DOCTYPE html>
+@model TipoReceitaModel
+
 <html>
 
 <head>
@@ -181,16 +191,27 @@
                     <div class="row" id="divDataPicker">
                         <input type="text" class="datepicker" id="dtReceita" value="" name="dataReceita">
                     </div>
+                    <select id="TiposReceitas" name="tipoReceita">
+                        @{TipoReceitaModel objTipoReceita = new TipoReceitaModel(); }
 
-                    <select id="cb_tipoReceita" name="tipoReceita">
+                        @foreach (var item in (objTipoReceita.retornaReceitas(id)))
+                        {
+                            <option value=@item.idTipoReceita.ToString()>@item.dsTipoReceita.ToString()</option>
+
+                        }
+                    </select>
+
+                    @*<select id="cb_tipoReceita" name="tipoReceita">
                         <option value="" disabled selected>Selecione o Tipo de Receita</option>
                         <option value="">Salário</option>
                         <option value="Outras Rendas">Outras Rendas</option>
                         <option value="">Reembolso</option>
                         <option value="">Estorno</option>
-                    </select>
+                    </select>*@
 
                     <div class="opcoesBtn">
+                        @{HttpContextAccessor.HttpContext.Session.SetString("IdUsuarioLogado", id.ToString()); }
+
                         <button type="submit" class=" waves-effect waves-green btn" id="btnSalvar">Salvar</button>
                         <a href="#!" class="modal-close waves-effect waves-effect btn background-color: red" id="btnCancelar">Cancelar</a>
                     </div>

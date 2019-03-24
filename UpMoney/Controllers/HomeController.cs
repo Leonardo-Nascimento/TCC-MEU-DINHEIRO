@@ -24,14 +24,18 @@ namespace UpMoney.Controllers
         {
 
             string nomeUsuario = HttpContext.Session.GetString("NomeUsuarioLogado");
+            string idUsuario = HttpContext.Session.GetString("IdUsuarioLogado");
 
-            if (nomeUsuario != null && nomeUsuario != "")
+            if (nomeUsuario != null && nomeUsuario != "" && idUsuario != null && idUsuario != "")
             {
                 ViewData["NOME"] = nomeUsuario;
+                ViewData["ID"] = idUsuario;
                 return View();
             }
+            
 
             ViewData["NOME"] = "";
+            ViewData["ID"] = "";
             return View();
         }
 

@@ -11,11 +11,11 @@ namespace UpMoney.Controllers
     public class ReceitaController : Controller
     {
 
-        IHttpContextAccessor HttpContextAccessor;
+        IHttpContextAccessor HttpContextAccessorController;
 
         public ReceitaController(IHttpContextAccessor httpContextAccessor)
         {
-            HttpContextAccessor = httpContextAccessor;
+            HttpContextAccessorController = httpContextAccessor;
 
         }
 
@@ -24,7 +24,7 @@ namespace UpMoney.Controllers
         public IActionResult VerReceita()
         {
 
-            Receitas objReceita = new Receitas(HttpContextAccessor);
+            ReceitasModel objReceita = new ReceitasModel(HttpContextAccessorController);
             ViewBag.ListaReceitas = objReceita.ListaReceitas();
             return View();
         }
@@ -33,7 +33,7 @@ namespace UpMoney.Controllers
         public IActionResult VerReceita(int id)
         {
             var numero = id;
-            Receitas objReceita = new Receitas(HttpContextAccessor);
+            ReceitasModel objReceita = new ReceitasModel(HttpContextAccessorController);
             ViewBag.ListaReceitas = objReceita.ListaReceitas(id);
 
             return View();
@@ -45,7 +45,7 @@ namespace UpMoney.Controllers
         public IActionResult ExcluirReceita(int id)
         {
             var numero = id;
-            Receitas objReceita = new Receitas(HttpContextAccessor);
+            ReceitasModel objReceita = new ReceitasModel(HttpContextAccessorController);
             objReceita.ExcluirReceitas(id);
 
 
@@ -55,9 +55,11 @@ namespace UpMoney.Controllers
 
 
         [HttpPost]
-        public IActionResult AdicionaReceita( Receitas receita)
+        public IActionResult AdicionaReceita( ReceitasModel receita)
         {
-            receita.RegistrarReceita();
+            ReceitasModel objReceita = receita;
+            receita.HttpContextAccessor = HttpContextAccessorController;
+            receita.RegistrarReceita(); 
             return View();
         }
 

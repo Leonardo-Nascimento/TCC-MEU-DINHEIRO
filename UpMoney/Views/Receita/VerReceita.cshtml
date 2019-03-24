@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/Layout2.cshtml";
 }
 
-@model Receitas
+@model ReceitasModel
 <h2>Receitas</h2>
 
 <body>
@@ -56,7 +56,7 @@
 
 
                 @{
-                    foreach (var item in (List<Receitas>)ViewBag.ListaReceitas)
+                    foreach (var item in (List<ReceitasModel>)ViewBag.ListaReceitas)
 
                     {
                         <tbody id="lista">
