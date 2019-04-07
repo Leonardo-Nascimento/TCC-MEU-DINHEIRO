@@ -3,9 +3,7 @@
 
 @{
     var id = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-    //Session.SetString("IdUsuarioLogado", nome);
-
-
+ 
 }
 
 <!DOCTYPE html>
@@ -178,7 +176,7 @@
                             <!-- <p>Digite um Valor:</p> -->
                             <input id="valor_inline" type="text" class="validate" name="valor">
 
-                            <label for="valor_inline">Valor:</label>
+                            <label class="active" for="valor_inline">Valor:</label>
                         </div>
                     </div>
                     <div class="row">
@@ -191,7 +189,7 @@
                     <div class="row" id="divDataPicker">
                         <input type="text" class="datepicker" id="dtReceita" value="" name="dataReceita">
                     </div>
-                    <select id="TiposReceitas" name="tipoReceita">
+                    <select id="TiposReceitas" name="idTipoReceita">
                         @{TipoReceitaModel objTipoReceita = new TipoReceitaModel(); }
 
                         @foreach (var item in (objTipoReceita.retornaReceitas(id)))
@@ -200,14 +198,7 @@
 
                         }
                     </select>
-
-                    @*<select id="cb_tipoReceita" name="tipoReceita">
-                        <option value="" disabled selected>Selecione o Tipo de Receita</option>
-                        <option value="">Salário</option>
-                        <option value="Outras Rendas">Outras Rendas</option>
-                        <option value="">Reembolso</option>
-                        <option value="">Estorno</option>
-                    </select>*@
+                
 
                     <div class="opcoesBtn">
                         @{HttpContextAccessor.HttpContext.Session.SetString("IdUsuarioLogado", id.ToString()); }

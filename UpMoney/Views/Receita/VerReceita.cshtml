@@ -1,20 +1,31 @@
-﻿@{
+﻿@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    var id = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+    List<ReceitasModel> Receitas;
+}
+
+@{
     ViewData["Title"] = "Receitas";
     Layout = "~/Views/Shared/Layout2.cshtml";
 }
 
-@model ReceitasModel
-<h2>Receitas</h2>
+
+@model ReceitasModel 
+ 
+
+<h2>Receitas</h2>       
 
 <body>
+    
     <main>
         <div id="intervaloData" style="display: none;">
             <table class="">
                 <tbody>
                     <tr>
-                        <td> <input type="text" class="datepicker" asp-for="dtInicial" > </td>
+                        <td> <input type="text" class="datepicker" asp-for="dtInicial"> </td>
                         <td>à </td>
-                        <td> <input type="text" class="datepicker" asp-for="dtFinal" > </td>
+                        <td> <input type="text" class="datepicker" asp-for="dtFinal"> </td>
                         <th></th>
                         <th><a href="#"><i class="material-icons" title="Despesa">search</i></a></th>
                     </tr>
@@ -24,10 +35,10 @@
 
         <div>
             <div class="input-field col s12" id="filtro">
-                <select onchange="selectoption()"  id="opcao">
-                    <option value="1" >Data</option>
+                <select onchange="selectoption()" id="opcao">
+                    <option value="1">Data</option>
                     <option value="2">Intervalo de Data</option>
-                    <option value="3" >Descrição</option>
+                    <option value="3">Descrição</option>
                     <option value="4">Valor Crescente</option>
                     <option value="5">Valor Decrescente</option>
                 </select>
@@ -49,27 +60,24 @@
                         <th>Conta</th>
                         <th>Tipo de Conta</th>
                         <th>Opções</th>
-                        
-                        
+
+
                     </tr>
                 </thead>
 
 
                 @{
-                    foreach (var item in (List<ReceitasModel>)ViewBag.ListaReceitas)
-
-                    {
+                    foreach (var item in (List<ReceitasModel>)ViewBag.ListaReceitas){
                         <tbody id="lista">
-                            <tr>                                
-                                <td value=@item.id.ToString() data-id = @item.id.ToString() hidden></td> 
-                                <td>@item.dataReceita.ToString()</td>
-                                <td>@item.tipoReceita.ToString()</td>
-                                <td>@item.categoriaReceita.ToString()</td>
-                                <td>@item.valor.ToString()</td>
-                                <td>@item.nomeConta.ToString()</td>
-                                <td>@item.tipoConta.ToString()</td>
-                                <td> <a href="#" onclick="ExcluirRceita(@item.id.ToString())"> <i class="material-icons" style="color: red" title="Deletar">delete</i> </a>  <a href="#"> <i class="material-icons" title="Editar">edit</i> </a></td>                                    
-
+                            <tr data-id=@item.idTipoReceita data-valor=@item.valor data-descricao="@item.descricaoReceita" data-dtReceita="@item.dataReceita" data-idTipoReceita=@item.idTipoReceita>
+                                <td value=@item.idReceita hidden></td>
+                                <td>@item.dataReceita</td>
+                                <td>@item.descricaoReceita</td>
+                                <td>@item.categoriaReceita</td>
+                                <td>@item.valor</td>
+                                <td>@item.nomeConta</td>
+                                <td>@item.tipoConta</td>
+                                <td> <a href="#" onclick="ExcluirRceita(@item.idReceita)"> <i class="material-icons" style="color: red" title="Deletar">delete</i> </a>  <a href="#modalEdit" class="modal-trigger" data-bteditar> <i class="material-icons" title="Editar">edit</i> </a></td>
                             </tr>
                         </tbody>
                     }
@@ -79,20 +87,65 @@
 
         </div>
 
-        
 
-        <div class="fixed-action-btn ">
-            <a class="btn-floating btn-large red ">
-                <i class="large material-icons ">add</i>
-            </a>
-            <ul>
-                <li><a class="btn-floating deep-purple darken-4"><i class="material-icons" title="Transação">swap_horiz</i></a></li>
-                <li><a class="btn-floating green"><i class="material-icons" title="Receita">publish</i></a></li>
-                <li><a class="btn-floating red"><i class="material-icons" title="Despesa">file_download</i></a></li>
-            </ul>
+
+
+        @using Microsoft.AspNetCore.Http;
+        @inject IHttpContextAccessor HttpContextAccessor
+        <!-- Modal Structure -->
+        <div id="modalEdit" class="modal">
+
+            <div class="modal-content" style="background-color: #81c784">
+                <h5>Entradas</h5>
+            </div>
+
+            <div class="row">
+
+                <form class="col s6 " id="formAddReceita" asp-controller="Receita" asp-action="AdicionaReceita" method="post">
+
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <!-- <p>Digite um Valor:</p> -->
+                            <input id="valorEditar" type="text" class="validate" name="valorEditar">
+
+                            <label class="active" for="valorEditar">Valor:</label>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="descricaoEditar" type="text" class="validate" name="descricaoEditar">
+                            <label class="active" for="descricaoEditar">Descrição:</label>
+                        </div>
+                    </div>
+
+                    <div class="row" id="divDataPicker">
+                        <input class="active" type="text" class="datepicker" id="dtReceitaEditar" name="dtReceitaEditar">
+                    </div>
+
+                    <select id="tipoReceitaEditar" name="tipoReceitaEditar">
+                        @{TipoReceitaModel objTipoReceita = new TipoReceitaModel(); }
+
+                        @foreach (var item in (objTipoReceita.retornaReceitas(id)))
+                        {
+                            <option value=@item.idTipoReceita.ToString()>@item.dsTipoReceita.ToString()</option>
+
+                        }
+                    </select>
+
+                    
+
+                    <div class="opcoesBtn">
+                        @{HttpContextAccessor.HttpContext.Session.SetString("IdUsuarioLogado", id.ToString()); }
+
+                        <button type="submit" class=" waves-effect waves-green btn" id="btnSalvar">Salvar</button>
+                        <a href="#!" class="modal-close waves-effect waves-effect btn background-color: red" id="btnCancelar">Cancelar</a>
+                    </div>
+                </form>
+
+            </div>
+
         </div>
-    
-
     </main>
 
 

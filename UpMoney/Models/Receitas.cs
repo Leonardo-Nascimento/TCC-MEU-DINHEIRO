@@ -13,10 +13,10 @@ namespace UpMoney.Models
     {
 
         [Required(ErrorMessage = "preencha os campos")]
-        public int id { get; set; }
-        
-        //public TipoReceita idTipoReceita { get;set;}
-        public string tipoReceita { get; set; }
+        public int idReceita { get; set; }
+        public int idTipoReceita { get; set; }
+
+        public string descricaoTipoReceita { get; set; }
 
         public string descricaoReceita { get; set; }
 
@@ -104,7 +104,7 @@ namespace UpMoney.Models
 
             
             string id_usuarioLogado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-            string sql = $" SELECT cm.idReceita,CONVERT(VARCHAR, r.[Data], 103) AS DATA,r.DsReceita,tr.DsTipoReceita,r.ValorReceita,c.NomeConta,c.TipoConta " +
+            string sql = $" SELECT cm.idReceita,CONVERT(VARCHAR, r.[Data], 103) AS DATA,r.DsReceita,tr.DsTipoReceita,tr.IdTipoReceita ,r.ValorReceita,c.NomeConta,c.TipoConta " +
                          $" FROM Cliente_Movimentacao AS cm " +
                          $" join Receitas AS r " +
                          $" on cm.idReceita = r.idReceita" +
@@ -134,10 +134,11 @@ namespace UpMoney.Models
                 {
                     item = new ReceitasModel();
                     TipoReceitaModel tipo = new TipoReceitaModel();
-                    item.id = int.Parse(dt.Rows[i]["idReceita"].ToString());
+                    item.idReceita = int.Parse(dt.Rows[i]["idReceita"].ToString());
                     item.dataReceita = dt.Rows[i]["Data"].ToString();
-                    item.tipoReceita = dt.Rows[i]["DsReceita"].ToString();
-                    item.categoriaReceita = dt.Rows[i]["DsTipoReceita"].ToString();
+                    item.descricaoReceita = dt.Rows[i]["DsReceita"].ToString();
+                    item.descricaoTipoReceita = dt.Rows[i]["DsTipoReceita"].ToString();
+                    item.idTipoReceita = int.Parse(dt.Rows[i]["IdTipoReceita"].ToString());                    
                     item.valor = decimal.Parse(dt.Rows[i]["valorReceita"].ToString());
                     item.nomeConta = dt.Rows[i]["NomeConta"].ToString();
                     item.tipoConta = dt.Rows[i]["TipoConta"].ToString();
@@ -175,7 +176,7 @@ namespace UpMoney.Models
         {
             string id_usuarioLogado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
             bool inserido = false;
-            string sql = $"INSERT INTO Receitas(TipoReceita,Data,DsReceita,ValorReceita) VALUES ( { tipoReceita }, '{ dataReceita }', '{ descricaoReceita }', { valor } )";
+            string sql = $"INSERT INTO Receitas(TipoReceita,Data,DsReceita,ValorReceita) VALUES ( { idTipoReceita }, '{ dataReceita }', '{ descricaoReceita }', { valor } )";
 
             try
             {
@@ -210,7 +211,7 @@ namespace UpMoney.Models
                                   $"   WHERE tr.tipoReceitaIdCliente = {id_usuarioLogado}" +                                  
                                   $"         AND r.idReceita IN (SELECT idReceita" +
                                   $"                          FROM   Receitas AS r2" +
-                                  $"                          WHERE  r2.TipoReceita = { tipoReceita }" +
+                                  $"                          WHERE  r2.TipoReceita = { idTipoReceita }" +
                                   $"                                 AND CONVERT(VARCHAR, r2.[Data], 103) = '{ dataReceita }')";
 
 

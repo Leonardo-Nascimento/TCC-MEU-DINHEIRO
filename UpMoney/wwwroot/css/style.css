@@ -209,3 +209,9 @@ body #filtro {
 #divDataPicker .modal {
     width: 80%;
 }
+
+
+#modalEdit{
+    width: 25%;
+    height: 70%;
+}

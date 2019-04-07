@@ -18,6 +18,7 @@ CREATE TABLE Cliente
 
 
 
+
 CREATE TABLE Cliente_Movimentacao (
   idCliente INT NOT NULL,
   idTipoDespesa INT ,
