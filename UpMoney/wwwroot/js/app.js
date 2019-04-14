@@ -68,16 +68,22 @@ btnReceita.forEach(el => el.addEventListener("click", () => {
 
 
 function getDetalhes(element) {
-  debugger
+  
   var tr = element.parentNode.parentNode;
   document.getElementById('valorEditar').value = tr.getAttribute("data-valor");
   document.getElementById('descricaoEditar').value = tr.getAttribute("data-descricao");
   document.getElementById('dtReceitaEditar').value = tr.getAttribute("data-dtReceita");    
   document.getElementById('tipoReceitaEditar').value = tr.getAttribute("data-TipoReceita");
-  document.getElementById("opcao").value = 
-}
+      
+    }
+  }
+);
 
-});
+function SelectTipoReceita(){
+  debugger
+  var tipoDespesa = document.getElementById("TiposReceitas").options[document.getElementById("TiposReceitas").selectedIndex].text;
+  document.getElementById(tipoDespesa).selected = "true";  
+}
 
 
 function selectoption() {

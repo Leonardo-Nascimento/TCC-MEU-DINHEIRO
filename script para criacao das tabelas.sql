@@ -141,7 +141,7 @@ INSERT INTO TipoReceita VALUES(NULL,'Investimentos')
 
 INSERT INTO TipoReceita VALUES(NULL,'Salário')
 
-INSERT INTO TipoReceita VALUES(NULL,'Reembolso'
+INSERT INTO TipoReceita VALUES(NULL,'Reembolso')
 
 INSERT INTO TipoReceita VALUES(NULL,'Estorno')
 

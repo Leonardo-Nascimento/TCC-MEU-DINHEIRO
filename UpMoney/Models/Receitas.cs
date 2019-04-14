@@ -200,7 +200,7 @@ namespace UpMoney.Models
                                   $"    [idTipoReceita]," +
                                   $"    [idReceita]" +
                                   $"  )" +
-                                  $"   SELECT tr.tipoReceitaIdCliente  AS idCliente," +
+                                  $"   SELECT ISNULL( tr.tipoReceitaIdCliente,{id_usuarioLogado})  AS idCliente," +
                                   $"          NULL AS idTipoDespesa," +
                                   $"          NULL AS idDespesa," +
                                   $"          tr.idTipoReceita AS idTipoReceita," +
@@ -208,7 +208,7 @@ namespace UpMoney.Models
                                   $"   FROM   Receitas AS r" +
                                   $"          JOIN TipoReceita AS tr" +
                                   $"               ON  tr.idTipoReceita = r.TipoReceita" +
-                                  $"   WHERE tr.tipoReceitaIdCliente = {id_usuarioLogado}" +                                  
+                                  $"   WHERE ISNULL( tr.tipoReceitaIdCliente,{id_usuarioLogado})= {id_usuarioLogado}" +                                  
                                   $"         AND r.idReceita IN (SELECT idReceita" +
                                   $"                          FROM   Receitas AS r2" +
                                   $"                          WHERE  r2.TipoReceita = { idTipoReceita }" +

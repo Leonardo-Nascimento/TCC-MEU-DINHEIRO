@@ -69,11 +69,11 @@
                 @{
                     foreach (var item in (List<ReceitasModel>)ViewBag.ListaReceitas){
                         <tbody id="lista">
-                            <tr data-id=@item.idTipoReceita data-valor=@item.valor data-descricao="@item.descricaoReceita" data-dtReceita="@item.dataReceita" data-idTipoReceita=@item.idTipoReceita>
+                            <tr data-id=@item.idTipoReceita data-valor=@item.valor data-descricao="@item.descricaoReceita" data-dtReceita="@item.dataReceita" data-idTipoReceita="@item.idTipoReceita">
                                 <td value=@item.idReceita hidden></td>
                                 <td>@item.dataReceita</td>
                                 <td>@item.descricaoReceita</td>
-                                <td>@item.categoriaReceita</td>
+                                <td>@item.descricaoTipoReceita</td>
                                 <td>@item.valor</td>
                                 <td>@item.nomeConta</td>
                                 <td>@item.tipoConta</td>
@@ -101,7 +101,7 @@
 
             <div class="row">
 
-                <form class="col s6 " id="formAddReceita" asp-controller="Receita" asp-action="AdicionaReceita" method="post">
+                <form class="col s6 " id="formAddReceita" asp-controller="Receita" asp-action="AdicionaReceita" method="post" >
 
                     <div class="row">
                         <div class="input-field col s6">
@@ -123,12 +123,12 @@
                         <input class="active" type="text" class="datepicker" id="dtReceitaEditar" name="dtReceitaEditar">
                     </div>
 
-                    <select id="tipoReceitaEditar" name="tipoReceitaEditar">
+                    <select id="tipoReceitaEditar" name="tipoReceitaEditar" onload="SelectTipoReceita()">
                         @{TipoReceitaModel objTipoReceita = new TipoReceitaModel(); }
 
                         @foreach (var item in (objTipoReceita.retornaReceitas(id)))
                         {
-                            <option value=@item.idTipoReceita.ToString()>@item.dsTipoReceita.ToString()</option>
+                            <option value=@item.idTipoReceita.ToString() id="@item.dsTipoReceita.ToString()">@item.dsTipoReceita.ToString()</option>
 
                         }
                     </select>
