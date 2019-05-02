@@ -2,22 +2,34 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.Odbc;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text;
 
 namespace UpMoney.Util
 {
     public class DAL
 
     {
-        private static string server = "SQLEXPRESS";
+        //private static string server = "bdcadastro.database.windows.net";
+        //private static string database = "BDCADASTRO";
+        //private static string user = "leonardo.BDCADASTRO";
+        //private static string password = "Leo@bmx1150";
+
+        //private static string connectionString = $"Server=tcp:bdcadastro.database.windows.net;Database=BDCADASTRO;Uid=leonardo.BDCADASTRO @bdcadastro; Pwd={password};";
+
+        private SqlConnection con;
+
+        private static string server = "./SQLEXPRESS";
         private static string database = "BDCADASTRO";
         private static string user = "";
         private static string password = "";
-        //private static string connectionString = $"server={server};Database={database};Uid={user};Pwd = {password};Trusted_Connection=True;";
-        private SqlConnection con;
         private static string connectionString = @"Server=.\sqlexpress;Database=BDCADASTRO;Trusted_Connection=True;";
+
+
         public DAL()
+
         {
             //connection = new MySqlConnection(connectionString);
             //connection.Open();

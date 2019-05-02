@@ -24,17 +24,22 @@ namespace UpMoney.Controllers
         {
 
             string nomeUsuario = HttpContext.Session.GetString("NomeUsuarioLogado");
+            string idUsuario = HttpContext.Session.GetString("IdUsuarioLogado");
 
-            if (nomeUsuario != null && nomeUsuario != "")
+            if (nomeUsuario != null && nomeUsuario != "" && idUsuario != null && idUsuario != "")
             {
                 ViewData["NOME"] = nomeUsuario;
+                ViewData["ID"] = idUsuario;
+
+                ViewData["TotalReceitas"] = new ReceitasModel().TotalRceitas(idUsuario);
+                
                 return View();
             }
+            
 
             ViewData["NOME"] = "";
+            ViewData["ID"] = "";
             return View();
-
-
         }
 
         public IActionResult Sobre()

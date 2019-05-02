@@ -1,5 +1,9 @@
 {
   "version": 1,
+<<<<<<< HEAD
   "dgSpecHash": "us7/7ebf+qzAtIR0EJHNEz7ORS77F/B7WjSVSqcGaJmULvi/8P3mTMFIxRFZPFcyw0qeTous3RdtzPSMUMj8iw==",
+=======
+  "dgSpecHash": "Re1+lsz26LJIchTKTauoGRwJaPOlmTHZthusju2dfODyW1vm/ARnzYteojz5yNmAwt/qRK7p5s0Gt4BVbqV6Xw==",
+>>>>>>> feature/TelaReceitas
   "success": true
 }

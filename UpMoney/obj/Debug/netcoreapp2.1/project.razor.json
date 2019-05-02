@@ -2696,6 +2696,14 @@
       "FileKind": "mvc"
     },
     {
+<<<<<<< HEAD
+=======
+      "FilePath": "Views\\Receita\\VerReceita.cshtml",
+      "TargetPath": "Views\\Receita\\VerReceita.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+>>>>>>> feature/TelaReceitas
       "FilePath": "Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -2711,6 +2719,14 @@
       "FileKind": "mvc"
     },
     {
+<<<<<<< HEAD
+=======
+      "FilePath": "Views\\Receita\\AdicionaTipo.cshtml",
+      "TargetPath": "Views\\Receita\\AdicionaTipo.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+>>>>>>> feature/TelaReceitas
       "FilePath": "Views\\Usuario\\Login.cshtml",
       "TargetPath": "Views\\Usuario\\Login.cshtml",
       "FileKind": "mvc"
@@ -2726,9 +2742,25 @@
       "FileKind": "mvc"
     },
     {
+<<<<<<< HEAD
       "FilePath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
+=======
+      "FilePath": "Views\\Shared\\Layout2.cshtml",
+      "TargetPath": "Views\\Shared\\Layout2.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Receita\\AdicionaReceita.cshtml",
+      "TargetPath": "Views\\Receita\\AdicionaReceita.cshtml",
+      "FileKind": "mvc"
+>>>>>>> feature/TelaReceitas
     }
   ]
 }

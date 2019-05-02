@@ -49,7 +49,8 @@ namespace UpMoney.Controllers
             if (login)
             {
                 //TempData["NOME"] = "LEONARDO";
-                HttpContext.Session.SetString("NomeUsuarioLogado", usuario.Nome);                
+                HttpContext.Session.SetString("NomeUsuarioLogado", usuario.Nome.ToUpper());
+                HttpContext.Session.SetString("IdUsuarioLogado", usuario.Id.ToString());
                 return RedirectToAction("MenuPrincipal","Home");
 
             }

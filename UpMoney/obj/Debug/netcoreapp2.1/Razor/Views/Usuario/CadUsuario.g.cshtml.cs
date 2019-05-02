@@ -68,7 +68,11 @@ using UpMoney.Models;
             WriteLiteral("\r\n<title>CadUsuario</title>\r\n\r\n");
             EndContext();
             BeginContext(79, 113, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "258b83e03879472c8e919ab612432b9f", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c47b08339a6b49018522c5cca5bfb5c2", async() => {
+>>>>>>> feature/TelaReceitas
                 BeginContext(143, 42, true);
                 WriteLiteral("\r\n    <!-- Input and Submit elements -->\r\n");
                 EndContext();
@@ -96,7 +100,11 @@ using UpMoney.Models;
             WriteLiteral("\r\n\r\n <center>\r\n\r\n    <div class=\"container\">\r\n        <div class=\"z-depth-1 grey lighten-4 row\" id=\"form-cadUsuario\">\r\n\r\n            ");
             EndContext();
             BeginContext(325, 1325, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a7e0418cb1d14b0685db76847830a478", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "900ef16a751e4aafa3e63ea45ffa29f5", async() => {
+>>>>>>> feature/TelaReceitas
                 BeginContext(394, 1249, true);
                 WriteLiteral(@"                
 
