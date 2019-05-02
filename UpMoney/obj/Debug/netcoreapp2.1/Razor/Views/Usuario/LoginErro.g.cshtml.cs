@@ -53,11 +53,7 @@ using UpMoney.Models;
             WriteLiteral("\r\n\r\n<title>ERRO</title>\r\n\r\n");
             EndContext();
             BeginContext(27, 62, false);
-<<<<<<< HEAD
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "89e1bc0a7e2c4e418eade40d59f4e56e", async() => {
-=======
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6afd4263323e45e6a8a87778a2ee4825", async() => {
->>>>>>> feature/TelaReceitas
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a1374b83d07842c3a8682de1103922f2", async() => {
                 BeginContext(33, 49, true);
                 WriteLiteral("\r\n\r\n    <h2 style=\"color:red\">Login Erro</h2>\r\n\r\n");
                 EndContext();

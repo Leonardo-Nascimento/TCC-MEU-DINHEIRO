@@ -58,20 +58,12 @@ using UpMoney.Models;
             WriteLiteral("\r\n<title>Login</title>\r\n\r\n");
             EndContext();
             BeginContext(26, 1946, false);
-<<<<<<< HEAD
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "12dec174600b4cb7821a1e4626fb0cb1", async() => {
-=======
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d872ee55c8874e8e96fcef6573859147", async() => {
->>>>>>> feature/TelaReceitas
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f9a6e730a9b544b89f73c1f0828819e6", async() => {
                 BeginContext(32, 223, true);
                 WriteLiteral("\r\n\r\n    <div class=\"section\"></div>\r\n    <main>\r\n        <center>\r\n\r\n            <div class=\"container\">\r\n\r\n                <div class=\"z-depth-1 grey lighten-4 row\" id=\"form-login\">\r\n               \r\n\r\n                    ");
                 EndContext();
                 BeginContext(255, 1283, false);
-<<<<<<< HEAD
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0525fd17d3194414b6f65afc70f63a2b", async() => {
-=======
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "557b241e85ad408aa439459f2a94bf7e", async() => {
->>>>>>> feature/TelaReceitas
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "46c637209f6a4cbdb70207c6ac8b0b89", async() => {
                     BeginContext(328, 1203, true);
                     WriteLiteral(@"
 
