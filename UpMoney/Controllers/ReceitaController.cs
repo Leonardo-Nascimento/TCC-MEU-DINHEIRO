@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -59,6 +61,7 @@ namespace UpMoney.Controllers
         {
             ReceitasModel objReceita = receita;
             receita.HttpContextAccessor = HttpContextAccessorController;
+
             receita.RegistrarReceita(); 
             return View();
         }
@@ -68,5 +71,27 @@ namespace UpMoney.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        //[Route("EditarReceita/{idReceita}")]
+        public IActionResult EditarReceita(ReceitasModel receita)
+        {
+            if(receita.idReceita != null)
+            {
+                receita.AtualizarReceita(receita.idReceita);
+                HttpContext.Session.SetString("EditarReceita", receita.idReceita.ToString());
+
+                return RedirectToAction("VerReceita");
+
+            }else
+                 HttpContext.Session.SetString("EditarReceita", null);
+
+                 return RedirectToAction("VerReceita");
+
+
+        }
+        
+
+
     }
 }

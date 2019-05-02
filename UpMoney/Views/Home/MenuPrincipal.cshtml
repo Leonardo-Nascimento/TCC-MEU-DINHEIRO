@@ -1,7 +1,9 @@
 
 @{
-            Layout = "~/Views/Shared/Layout2.cshtml";
+    Layout = "~/Views/Shared/Layout2.cshtml";
 }
+
+@model ReceitasModel
 
 <title>Menu Principal</title>
 
@@ -25,8 +27,8 @@
 
 
 
+<h5 style="font-family: 'Merienda One', cursive;" id="nomeVisitante">SEJA BEM VINDO @ViewData["NOME"]!</h5>
 
-<h1>@ViewData["NOME"]</h1>
 
 <body>
 
@@ -52,6 +54,27 @@
         </div>
 
     </main>
+
+    <div id="cardReceita">
+        <div class="row">
+            <div class="col s12 m6 ">
+                <div class="card z-depth-4" style="background-color: #4ea952">
+                    <div class="card-content white-text">
+                        <span class="card-title ">Saldo Total de Suas Receitas até o Momento </span>
+                        @{ReceitasModel objReceita = new ReceitasModel();
+                           
+                         }
+
+                        @{ 
+                        <h1 style="font-family: 'Merienda One'; color: white">R$ @ViewData["TotalReceitas"] </h1>
+                         }
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 

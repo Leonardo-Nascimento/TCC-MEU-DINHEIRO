@@ -14,7 +14,7 @@
 @model ReceitasModel 
  
 
-<h2>Receitas</h2>       
+<h3 style="font-family: 'Merienda One', cursive; color:#21a721">Receitas</h3>       
 
 <body>
     
@@ -67,27 +67,55 @@
 
 
                 @{
-                    foreach (var item in (List<ReceitasModel>)ViewBag.ListaReceitas){
+                    decimal totalReceitas = 0;
+                    foreach (var item in (List<ReceitasModel>)ViewBag.ListaReceitas)
+                    {
+                        totalReceitas = item.totalReceita;
                         <tbody id="lista">
-                            <tr data-id=@item.idTipoReceita data-valor=@item.valor data-descricao="@item.descricaoReceita" data-dtReceita="@item.dataReceita" data-idTipoReceita="@item.idTipoReceita">
+                            <tr data-id=@item.idTipoReceita data-valor=@item.valor data-descricao="@item.descricaoReceita" data-dtReceita="@item.dataReceita" data-idTipoReceita="@item.idTipoReceita"  data-descricaoTipoReceita="@item.descricaoTipoReceita" data-idReceita="@item.idReceita">
                                 <td value=@item.idReceita hidden></td>
                                 <td>@item.dataReceita</td>
                                 <td>@item.descricaoReceita</td>
                                 <td>@item.descricaoTipoReceita</td>
-                                <td>@item.valor</td>
+                                <td style="color:#21a721">@item.valor</td>
                                 <td>@item.nomeConta</td>
                                 <td>@item.tipoConta</td>
-                                <td> <a href="#" onclick="ExcluirRceita(@item.idReceita)"> <i class="material-icons" style="color: red" title="Deletar">delete</i> </a>  <a href="#modalEdit" class="modal-trigger" data-bteditar> <i class="material-icons" title="Editar">edit</i> </a></td>
+                                <td> <a href="#" onclick="ExcluirRceita(@item.idReceita)"> <i class="material-icons" style="color: red" title="Deletar">delete</i> </a>  <a href="#modalEdit" onclick="carregarTipoReceita('tipoReceitaEditar');" class="modal-trigger" data-bteditar> <i class="material-icons" title="Editar">edit</i> </a></td>
                             </tr>
                         </tbody>
                     }
                 }
 
-            </table>
+            </table>           
 
         </div>
 
+        <div id="grid" class="totalReceita">
+            <table class="centered" id="grid">
+                <thead>
+                    <tr>
+                        <th id="TotalReceita" style="color:#21a721">Total</th>
+                        <th></th>
+                        <th></th>                       
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th id="TotalReceita" style="color:#21a721">@totalReceitas</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        
+                    </tr>
+                </thead>
+            </table>
+        </div>
 
+        
+
+           
+
+        
 
 
         @using Microsoft.AspNetCore.Http;
@@ -101,12 +129,13 @@
 
             <div class="row">
 
-                <form class="col s6 " id="formAddReceita" asp-controller="Receita" asp-action="AdicionaReceita" method="post" >
+                <form class="col s6 " id="formAddReceita" asp-controller="Receita" asp-action="EditarReceita" method="post" >
 
                     <div class="row">
+                        <input  id="idReceitaFormEditar"  type="number" value="" name="idReceita" hidden>
                         <div class="input-field col s6">
                             <!-- <p>Digite um Valor:</p> -->
-                            <input id="valorEditar" type="text" class="validate" name="valorEditar">
+                            <input id="valorEditar" type="text" class="validate" name="valor">
 
                             <label class="active" for="valorEditar">Valor:</label>
                         </div>
@@ -114,22 +143,22 @@
                     
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="descricaoEditar" type="text" class="validate" name="descricaoEditar">
+                            <input id="descricaoEditar" type="text" class="validate" name="descricaoReceita">
                             <label class="active" for="descricaoEditar">Descrição:</label>
                         </div>
                     </div>
 
                     <div class="row" id="divDataPicker">
-                        <input class="active" type="text" class="datepicker" id="dtReceitaEditar" name="dtReceitaEditar">
+                        <input class="active" type="text" class="datepicker" id="dtReceitaEditar" name="dataReceita">
                     </div>
 
-                    <select id="tipoReceitaEditar" name="tipoReceitaEditar" onload="SelectTipoReceita()">
-                        @{TipoReceitaModel objTipoReceita = new TipoReceitaModel(); }
+                    <select id="tipoReceitaEditar" name="idTipoReceita" onload="SelectTipoReceita()">
+                       @{TipoReceitaModel objTipoReceita = new TipoReceitaModel(); }
 
                         @foreach (var item in (objTipoReceita.retornaReceitas(id)))
                         {
-                            <option value=@item.idTipoReceita.ToString() id="@item.dsTipoReceita.ToString()">@item.dsTipoReceita.ToString()</option>
-
+                            //item.idTipoReceita == 
+                            <option value=@item.idTipoReceita.ToString() id="@item.dsTipoReceita.ToString()" >@item.dsTipoReceita.ToString()</option>
                         }
                     </select>
 
@@ -148,10 +177,6 @@
         </div>
     </main>
 
-
-    <script>
-
-    </script>
 
 
 </body>

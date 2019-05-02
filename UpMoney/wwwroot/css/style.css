@@ -207,11 +207,47 @@ body #filtro {
 }
 
 #divDataPicker .modal {
-    width: 80%;
+    width: 90%;
 }
 
+.totalReceita{
+    margin-top: 4px;
+}
+
+th#TotalReceita{
+    font-size: 18px;
+}
+
+/*--------------------Modal Editar--------------------------*/
 
 #modalEdit{
     width: 25%;
     height: 70%;
+}
+
+/*-----------------------------------------------------------*/
+#cardReceita{
+    
+}
+
+.card{
+    border-radius: 50px;
+    margin-right: 30px;
+    height: 160px;
+}
+
+#cardReceita .card span{
+    font-weight: 400;
+    font-size: 22px;
+}
+
+#cardReceita .card h1{
+    font-size: 40px;
+    padding-left: 107px;
+}
+
+h5#nomeVisitante{
+    margin-left: 700px;
+    
+    padding-left: 67px;
 }

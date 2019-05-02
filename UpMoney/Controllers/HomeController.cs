@@ -30,6 +30,9 @@ namespace UpMoney.Controllers
             {
                 ViewData["NOME"] = nomeUsuario;
                 ViewData["ID"] = idUsuario;
+
+                ViewData["TotalReceitas"] = new ReceitasModel().TotalRceitas(idUsuario);
+                
                 return View();
             }
             

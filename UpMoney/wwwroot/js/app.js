@@ -1,20 +1,6 @@
 
-//$(".dropdown-trigger").dropdown();
 
 
-
-//function callParallax() {
-//  $('.parallax').parallax();
-//}
-
-//window.load = callParallax();
-
-////$(window).load(function(){
-//$(document).ready(function(){
-//  // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-//  $('#modal1').modal();
-//  $('#modal1').modal('open'); 
-//});
 
 //MENU LATERAL//
   document.addEventListener('DOMContentLoaded', function () {
@@ -70,11 +56,36 @@ btnReceita.forEach(el => el.addEventListener("click", () => {
 function getDetalhes(element) {
   
   var tr = element.parentNode.parentNode;
+  var textoOpcao = "";
+  var idOpcao;
+
   document.getElementById('valorEditar').value = tr.getAttribute("data-valor");
   document.getElementById('descricaoEditar').value = tr.getAttribute("data-descricao");
-  document.getElementById('dtReceitaEditar').value = tr.getAttribute("data-dtReceita");    
-  document.getElementById('tipoReceitaEditar').value = tr.getAttribute("data-TipoReceita");
-      
+  document.getElementById('dtReceitaEditar').value = tr.getAttribute("data-dtReceita");
+  debugger    
+  document.getElementById('idReceitaFormEditar').value = tr.getAttribute("data-idReceita");    
+  
+  
+  textoOpcao = tr.getAttribute("data-descricaoTipoReceita");
+  idOpcao = tr.getAttribute("data-idtiporeceita");
+
+
+
+  const selectedCategory = document.querySelector('#tipoReceitaEditar');
+  debugger
+  const materializeSelectedCategory = M.FormSelect.init(selectedCategory);
+
+
+  selectedCategory.value = idOpcao;
+  if(typeof(Event) === 'function') {
+      var event = new Event('change');
+  }else{
+      var event = document.createEvent('Event');
+      event.initEvent('change', true, true);
+  }
+  selectedCategory.dispatchEvent(event);
+  
+
     }
   }
 );
@@ -113,9 +124,8 @@ function opcaoPesquisa(numero) {
 
 
 function ExcluirRceita(numero){
-
   var url = window.location.origin + "/Receita/ExcluirReceita/" + numero;
-
   window.location.href = url;
 
 }
+

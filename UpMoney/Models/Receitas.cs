@@ -26,7 +26,7 @@ namespace UpMoney.Models
 
         public string dtFinal { get; set; }
 
-        public decimal valor { get; set; }        
+        public string valor { get; set; }        
 
         public string categoriaReceita { get; set; }
 
@@ -34,6 +34,7 @@ namespace UpMoney.Models
 
         public string tipoConta { get; set; }
 
+        public decimal totalReceita { get; set; }
 
 
         public IHttpContextAccessor HttpContextAccessor { get; set; }
@@ -52,19 +53,35 @@ namespace UpMoney.Models
         }
 
 
-        public bool BuscaRceitas()
+        public string TotalRceitas(string idUsuario)
         {
-            DataTable dt = null;
+            string id_usuarioLogado = idUsuario;
+            string sql = $" SELECT cm.idReceita,CONVERT(VARCHAR, r.[Data], 103) AS DATA,(SELECT SUM(Receitas.ValorReceita) FROM Receitas ) AS Total,r.DsReceita,tr.DsTipoReceita,tr.IdTipoReceita ,r.ValorReceita,c.NomeConta,c.TipoConta " +
+                         " FROM Cliente_Movimentacao AS cm " +
+                         " join Receitas AS r " +
+                         " on cm.idReceita = r.idReceita" +
+                         " JOIN TipoReceita AS tr" +
+                         " ON tr.idTipoReceita = r.TipoReceita" +
+                         " JOIN Conta AS c" +
+                         " ON c.idCliente = cm.idCliente" +
+                         $" WHERE cm.idCliente = {id_usuarioLogado}";
 
-          
-                string sql = $"SELECT * from Receitas";
-                DAL OBJDAL = new DAL();
-                dt = OBJDAL.RetDataTable(sql);
-            
+            string valorTotalReceitas = "";
 
-         
+            try
+            {
+                DAL objDAL = new DAL();
+                DataTable dt = objDAL.RetDataTable(sql);
 
-            return true;
+                valorTotalReceitas =  dt.Rows[1]["Total"].ToString();
+
+            }
+            catch (Exception e)
+            {
+                e.Message.ToString();
+            }
+
+            return valorTotalReceitas;
         }
 
         //Mostra todas as Rceitas do Usuario logado
@@ -104,14 +121,14 @@ namespace UpMoney.Models
 
             
             string id_usuarioLogado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-            string sql = $" SELECT cm.idReceita,CONVERT(VARCHAR, r.[Data], 103) AS DATA,r.DsReceita,tr.DsTipoReceita,tr.IdTipoReceita ,r.ValorReceita,c.NomeConta,c.TipoConta " +
-                         $" FROM Cliente_Movimentacao AS cm " +
-                         $" join Receitas AS r " +
-                         $" on cm.idReceita = r.idReceita" +
-                         $" JOIN TipoReceita AS tr" +
-                         $" ON tr.idTipoReceita = r.TipoReceita" +
-                         $" JOIN Conta AS c" +
-                         $" ON c.idCliente = cm.idCliente"+ 
+            string sql = $" SELECT cm.idReceita,CONVERT(VARCHAR, r.[Data], 103) AS DATA,(SELECT SUM(Receitas.ValorReceita) FROM Receitas ) AS Total,r.DsReceita,tr.DsTipoReceita,tr.IdTipoReceita ,r.ValorReceita,c.NomeConta,c.TipoConta " +
+                         " FROM Cliente_Movimentacao AS cm " +
+                         " join Receitas AS r " +
+                         " on cm.idReceita = r.idReceita" +
+                         " JOIN TipoReceita AS tr" +
+                         " ON tr.idTipoReceita = r.TipoReceita" +
+                         " JOIN Conta AS c" +
+                         " ON c.idCliente = cm.idCliente" +
                          $" WHERE cm.idCliente = {id_usuarioLogado}";
 
                         if (opcao == 2 && (dtInicial != null && dtFinal != null ))
@@ -121,7 +138,16 @@ namespace UpMoney.Models
                         else
                         {
 
-                            sql = sql + " ORDER BY " + condicao;
+                            sql = sql + " GROUP BY " +
+                            $"cm.idReceita,"+
+                            " CONVERT(VARCHAR, r.[Data], 103),"+
+                            " r.DsReceita,"+
+                            " tr.DsTipoReceita,"+
+                            " tr.IdTipoReceita,"+
+                            " r.ValorReceita,"+
+                            " c.NomeConta,"+
+                            " c.TipoConta," +
+                            " r.Data ORDER BY " + condicao;
                         }
             try { 
 
@@ -139,7 +165,8 @@ namespace UpMoney.Models
                     item.descricaoReceita = dt.Rows[i]["DsReceita"].ToString();
                     item.descricaoTipoReceita = dt.Rows[i]["DsTipoReceita"].ToString();
                     item.idTipoReceita = int.Parse(dt.Rows[i]["IdTipoReceita"].ToString());                    
-                    item.valor = decimal.Parse(dt.Rows[i]["valorReceita"].ToString());
+                    item.valor = dt.Rows[i]["valorReceita"].ToString();
+                    item.totalReceita  = decimal.Parse(dt.Rows[i]["Total"].ToString()); 
                     item.nomeConta = dt.Rows[i]["NomeConta"].ToString();
                     item.tipoConta = dt.Rows[i]["TipoConta"].ToString();
                     lista.Add(item);
@@ -175,6 +202,7 @@ namespace UpMoney.Models
         public void RegistrarReceita()
         {
             string id_usuarioLogado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+            valor = valor.ToString().Replace(",", ".");
             bool inserido = false;
             string sql = $"INSERT INTO Receitas(TipoReceita,Data,DsReceita,ValorReceita) VALUES ( { idTipoReceita }, '{ dataReceita }', '{ descricaoReceita }', { valor } )";
 
@@ -226,5 +254,36 @@ namespace UpMoney.Models
 
             }
         }
+
+
+        public void AtualizarReceita(int ReceitaID)
+        {
+            //string id_usuarioLogado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+            valor = valor.ToString().Replace(",", ".");            
+
+            string sql = $" UPDATE Receitas " +
+                         $" SET " +
+                         $" TipoReceita = {idTipoReceita}"+
+                         $" ,DATA = '{dataReceita}'" +
+                         $" ,DsReceita = '{descricaoReceita}'" +
+                         $" ,ValorReceita = { valor }" +
+
+                         $" WHERE idReceita = " +ReceitaID; 
+
+            try
+            {
+                DAL objDAL = new DAL();
+                objDAL.ExecutaComandoSQL(sql);
+            }
+            catch (Exception e)
+            {
+                e.Message.ToString();
+            }
+
+           
+        }
+
     }
+
+
 }
