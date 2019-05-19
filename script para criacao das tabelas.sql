@@ -76,12 +76,13 @@ CREATE TABLE Orçamentos (
 
 
 
-CREATE TABLE Despesas (
+CREATE TABLE Despesas (   	
   idDespesa INT IDENTITY(1, 1) NOT NULL,
   TipoDespesa INT,
   DATA DATE,
   DsDespesa VARCHAR (50),
   valorDespesa DECIMAL ,
+  idClienteDespesa INT,
   PRIMARY KEY(idDespesa),
   
   CONSTRAINT fk_TipoDespesa_IdTipoDespesa
@@ -92,12 +93,13 @@ CREATE TABLE Despesas (
 
 
 
-CREATE TABLE Receitas (
+CREATE TABLE Receitas (  
   idReceita INT IDENTITY(1, 1) NOT NULL,
   TipoReceita INT,
   DATA DATE,  
   DsReceita VARCHAR(50) ,
-  ValorReceita DECIMAL,  
+  ValorReceita DECIMAL,
+  idClienteReceita INT,
   PRIMARY KEY(idReceita),
   
   CONSTRAINT fk_TipoReceita_IdTipoReceita
@@ -119,16 +121,14 @@ CREATE TABLE Tipo_Orçamento (
 
 
 CREATE TABLE TipoReceita (
-  IdTipoReceita INT IDENTITY(1, 1) PRIMARY KEY NOT NULL,
-  tipoReceitaIdCliente INT,
+  IdTipoReceita INT IDENTITY(1, 1) PRIMARY KEY NOT NULL,  
   DsTipoReceita VARCHAR(50), 
 );
 
 
 
 CREATE TABLE TipoDespesa (
-  idTipoDespesa INT IDENTITY(1, 1) PRIMARY KEY NOT NULL,
-  tipoDespesaIdCliente INT ,
+  idTipoDespesa INT IDENTITY(1, 1) PRIMARY KEY NOT NULL,  
   DsTipoDespesa VARCHAR (50),
   
   );
@@ -137,15 +137,29 @@ CREATE TABLE TipoDespesa (
 
 --/*----------INSERINDO TIPOS DE RECEITA------------*/
 
-INSERT INTO TipoReceita VALUES(NULL,'Investimentos')
+INSERT INTO TipoReceita VALUES('Investimentos')
 
-INSERT INTO TipoReceita VALUES(NULL,'Salário')
+INSERT INTO TipoReceita VALUES('Salário')
 
-INSERT INTO TipoReceita VALUES(NULL,'Reembolso')
+INSERT INTO TipoReceita VALUES('Reembolso')
 
-INSERT INTO TipoReceita VALUES(NULL,'Estorno')
+INSERT INTO TipoReceita VALUES('Estorno')
 
-INSERT INTO TipoReceita VALUES(NULL,'Outras Receitas')
+INSERT INTO TipoReceita VALUES('Outras Receitas')
+
+
+
+--/*----------INSERINDO TIPOS DE DESPESA------------*/
+
+INSERT INTO TipoDespesa VALUES('Alimentação')
+
+INSERT INTO TipoDespesa VALUES('Gastos Pessoais')
+
+INSERT INTO TipoDespesa VALUES('Impostos')
+
+INSERT INTO TipoDespesa VALUES('Lazer')
+
+INSERT INTO TipoDespesa VALUES('Outros Gastos')
 
 
 

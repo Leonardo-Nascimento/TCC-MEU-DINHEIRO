@@ -46,37 +46,225 @@
             <a class="btn-floating btn-large red ">
                 <i class="large material-icons ">add</i>
             </a>
-            <ul>
+            <ul id="iconsSuspensos">
                 <li><a class="btn-floating deep-purple darken-4"><i class="material-icons" title="Transação">swap_horiz</i></a></li>
-                <li><a class="btn-floating green"><i class="material-icons" title="Receita">publish</i></a></li>
+                <li><a href="#modal2" class="btn-floating green"><i class="material-icons" title="Receita">publish</i></a></li>
                 <li><a class="btn-floating red"><i class="material-icons" title="Despesa">file_download</i></a></li>
             </ul>
         </div>
 
     </main>
 
-    <div id="cardReceita">
-        <div class="row">
-            <div class="col s12 m6 ">
-                <div class="card z-depth-4" style="background-color: #4ea952">
-                    <div class="card-content white-text">
-                        <span class="card-title ">Saldo Total de Suas Receitas até o Momento </span>
-                        @{ReceitasModel objReceita = new ReceitasModel();
-                           
-                         }
+    <div id="cards">
 
-                        @{ 
-                        <h1 style="font-family: 'Merienda One'; color: white">R$ @ViewData["TotalReceitas"] </h1>
-                         }
+        <!-- <div id="cardReceita">
+            <div class="row">
+                <div class="col s12 m12 ">
+                    <div class="card z-depth-4" style="background-color: #4ea952">
+                        <div class="card-content white-text">
+
+                            @{
+                                if (@ViewData["TotalReceitas"] != null)
+                                {
+                                    var total = @ViewData["TotalReceitas"].ToString();
+                                    <span class="card-title ">Saldo Total Receitas.</span>
+                                    <h1 style="font-family: 'Merienda One'; color: white">R$ @total </h1>
+                                }
+                                else
+                                {
+                                    <span class="card-title "> Você não possui saldo de Receitas!</span>
+                                }
+
+                            }
+
+                        </div>
+
+
                     </div>
-
-                    
                 </div>
             </div>
-        </div>
+        </div> -->
+
+
+
+        <!-- <div id="cardDespesa">
+            <div class="row">
+                <div class="col s12 m12 ">
+                    <div class="card z-depth-4" style="background-color: #e53935">
+                        <div class="card-content white-text">
+
+                            @{
+
+
+                                if (@ViewData["TotalDespesas"] != null)
+                                {
+                                    var total = @ViewData["TotalDespesas"].ToString();
+                                    <span class="card-title ">Saldo Total Despesas. </span>
+                                    <h1 style="font-family: 'Merienda One'; color: white">R$ @total </h1>
+                                }
+                                else
+                                {
+                                    <span class="card-title "> Você não possui saldo de Despesas!</span>
+                                }
+
+                            }
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+        <!-- <div id="cardTotal">
+            <div class="row">
+                <div class="col s12 m12 ">
+                    <div class="card z-depth-4" style="background-color: #2196f3">
+                        <div class="card-content white-text">
+
+                            @{
+
+                                if (@ViewData["TotalDespesas"] != null && @ViewData["TotalReceitas"] != null)
+                                {
+                                    var despesas = int.Parse(ViewData["TotalDespesas"].ToString());
+                                    var receitas = int.Parse(ViewData["TotalReceitas"].ToString());
+                                    <span class="card-title ">Saldo Total! </span>
+                                    <h1 style="font-family: 'Merienda One'; color: white">R$ @(receitas - despesas) </h1>
+                                }
+                                else
+                                {
+                                    <span class="card-title "> Você não possui saldo de Despesas!</span>
+                                }
+
+                            }
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
     </div>
 
 
+
+    <table class="centered" id="tableSaldos">
+
+
+        <tbody>
+            <tr>
+                <td>
+                    <div id="cardSaldos">
+                        <div class="row">
+                            <div class="col s12 m12 ">
+                                <div class="card z-depth-4" style="background-color: #4ea952">
+                                    <div class="card-content white-text">
+
+                                        @{
+                                            if (@ViewData["TotalReceitas"] != null)
+                                            {
+                                                var total = @ViewData["TotalReceitas"].ToString();
+                                                <span class="card-title ">Saldo Total Receitas.</span>
+                                                <h1 style="font-family: 'Merienda One'; color: white">R$ @total </h1>
+                                            }
+                                            else
+                                            {
+                                                <span class="card-title "> Você não possui saldo de Receitas!</span>
+                                            }
+
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+
+            </tr>
+
+
+            <tr>
+                <td>
+
+                    <div id="cardSaldos">
+                        <div class="row">
+                            <div class="col s12 m12 ">
+                                <div class="card z-depth-4" style="background-color: #e53935">
+                                    <div class="card-content white-text">
+
+                                        @{
+
+
+                                            if (@ViewData["TotalDespesas"] != null)
+                                            {
+                                                var total = @ViewData["TotalDespesas"].ToString();
+                                                <span class="card-title ">Saldo Total Despesas. </span>
+                                                <h1 style="font-family: 'Merienda One'; color: white">R$ @total </h1>
+                                            }
+                                            else
+                                            {
+                                                <span class="card-title "> Você não possui saldo de Despesas!</span>
+                                            }
+
+                                        }
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+
+                    <div id="cardTotal">
+                        <div class="row">
+                            <div class="col s12 m12 ">
+                                <div class="card z-depth-4" style="background-color: #2196f3">
+                                    <div class="card-content white-text">
+
+                                        @{
+
+                                            if (@ViewData["TotalDespesas"] != null && @ViewData["TotalReceitas"] != null)
+                                            {
+                                                var despesas = int.Parse(ViewData["TotalDespesas"].ToString());
+                                                var receitas = int.Parse(ViewData["TotalReceitas"].ToString());
+                                                <span class="card-title ">Saldo Total! </span>
+                                                <h1 style="font-family: 'Merienda One'; color: white">R$ @(receitas - despesas) </h1>
+                                            }
+                                            else
+                                            {
+                                                <span class="card-title "> Você não possui saldo de Despesas!</span>
+                                            }
+
+                                        }
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
 
     <script>
 

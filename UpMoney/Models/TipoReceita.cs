@@ -35,11 +35,7 @@ namespace UpMoney.Models
 
             string id_usuarioLogado = idUsuario;
 
-            string sql =   $" SELECT tr.idTipoReceita,tr.DsTipoReceita " +
-                           $" FROM TipoReceita AS tr" +
-                           $" LEFT JOIN Cliente AS c " +
-                           $" ON c.idCliente = tr.tipoReceitaIdCliente "+
-                           $" WHERE c.idCliente = {id_usuarioLogado} OR c.idCliente IS NULL" ;
+            string sql =   $" SELECT * FROM TipoReceita AS tr " ;
 
                 
             try

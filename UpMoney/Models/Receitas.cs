@@ -73,7 +73,7 @@ namespace UpMoney.Models
                 DAL objDAL = new DAL();
                 DataTable dt = objDAL.RetDataTable(sql);
 
-                valorTotalReceitas =  dt.Rows[1]["Total"].ToString();
+                valorTotalReceitas =  dt.Rows[0]["Total"].ToString();
 
             }
             catch (Exception e)
@@ -182,6 +182,7 @@ namespace UpMoney.Models
             return lista;
         }
 
+
         //Exclui a receita selecionada
 
         public void ExcluirReceitas(int id)
@@ -204,7 +205,7 @@ namespace UpMoney.Models
             string id_usuarioLogado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
             valor = valor.ToString().Replace(",", ".");
             bool inserido = false;
-            string sql = $"INSERT INTO Receitas(TipoReceita,Data,DsReceita,ValorReceita) VALUES ( { idTipoReceita }, '{ dataReceita }', '{ descricaoReceita }', { valor } )";
+            string sql = $"INSERT INTO Receitas(TipoReceita,Data,DsReceita,ValorReceita,idClienteReceita) VALUES ({idTipoReceita }, '{ dataReceita }', '{ descricaoReceita }', { valor },{id_usuarioLogado} )";
 
             try
             {
@@ -228,7 +229,7 @@ namespace UpMoney.Models
                                   $"    [idTipoReceita]," +
                                   $"    [idReceita]" +
                                   $"  )" +
-                                  $"   SELECT ISNULL( tr.tipoReceitaIdCliente,{id_usuarioLogado})  AS idCliente," +
+                                  $"   SELECT r.idClienteReceita AS idCliente," +
                                   $"          NULL AS idTipoDespesa," +
                                   $"          NULL AS idDespesa," +
                                   $"          tr.idTipoReceita AS idTipoReceita," +
@@ -236,7 +237,7 @@ namespace UpMoney.Models
                                   $"   FROM   Receitas AS r" +
                                   $"          JOIN TipoReceita AS tr" +
                                   $"               ON  tr.idTipoReceita = r.TipoReceita" +
-                                  $"   WHERE ISNULL( tr.tipoReceitaIdCliente,{id_usuarioLogado})= {id_usuarioLogado}" +                                  
+                                  $"   WHERE r.idClienteReceita = {id_usuarioLogado}" +                                  
                                   $"         AND r.idReceita IN (SELECT idReceita" +
                                   $"                          FROM   Receitas AS r2" +
                                   $"                          WHERE  r2.TipoReceita = { idTipoReceita }" +

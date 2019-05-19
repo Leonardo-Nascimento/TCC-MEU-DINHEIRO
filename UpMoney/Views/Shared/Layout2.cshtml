@@ -85,7 +85,7 @@
 
                     <div class="collapsible-body">
                         <ul>
-                            <li><a href="#modal2" class="modal-trigger">Adicionar Uma Nova</a></li>
+                            <li><a href="#modal2" class="modal-trigger" onclick="mudaCorModal('Receita');"">Adicionar Uma Nova</a></li>
                             <li><a href="#!">Adicionar Tipo</a></li>
                             <li><a href="../Receita/VerReceita">Ver Receitas</a></li>
                         </ul>
@@ -99,9 +99,9 @@
 
                     <div class="collapsible-body">
                         <ul>
-                            <li><a href="#!">Adicionar Uma Nova</a></li>
+                            <li><a href="#modal1"  class="modal-trigger" onclick="mudaCorModal('Despesa');">Adicionar Uma Nova</a></li>
                             <li><a href="#!">Adicionar Tipo</a></li>
-                            <li><a href="#!">Ver Despesas</a></li>
+                            <li><a href="../Despesa/VerDespesa">Ver Despesas</a></li>
                         </ul>
                     </div>
                 </li>
@@ -171,16 +171,17 @@
         </ul>
 
 
-        <!-- Modal Structure -->
-        <div id="modal2" class="modal">
 
-            <div class="modal-content" style="background-color: #81c784">
-                <h5>Entradas</h5>
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal" >
+
+            <div class="modal-content" id="corModal" style="background-color: #e53935">
+                <h5 id="tituloModal" >Despesas</h5>
             </div>
 
             <div class="row">
 
-                <form class="col s6 " id="formAddReceita" asp-controller="Receita" asp-action="AdicionaReceita" method="post">
+                <form class="col s6 " id="formAddDespesa" asp-controller="Despesa" asp-action="AdicionaDespesa" method="post">
 
                     <div class="row">
                         <div class="input-field col s6">
@@ -192,15 +193,72 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="descricao_inline" type="text" class="validate" name="descricaoReceita">
+                            <input id="descricao_inline" type="text" class="validate" name="descricaoDespesa">
                             <label for="descricao_inline">Descrição:</label>
+                        </div>
+                    </div>
+
+                    <div class="row" id="divDataPicker">
+                        <input type="text" class="datepicker" id="dtReceita" value="" name="dataDespesa">
+                    </div>
+                    <select id="TiposDespesas" name="idTipoDespesa">
+                        @{TipoDespesaModel objTipoDespesa = new TipoDespesaModel(); }
+
+                        @foreach (var item in (objTipoDespesa.retornaDespesas(id)))
+                        {
+                            <option value=@item.idTipoDespesa.ToString()>@item.dsTipoDespesa.ToString()</option>
+
+                        }
+                    </select>
+                
+
+                    <div class="opcoesBtn">
+                        @{HttpContextAccessor.HttpContext.Session.SetString("IdUsuarioLogado", id.ToString()); }
+
+                        <button type="submit" class=" waves-effect waves-green btn" id="btnSalvar">Salvar</button>
+                        <a href="#!" class="modal-close waves-effect waves-effect btn background-color: red" id="btnCancelar">Cancelar</a>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+        <!-- Modal Structure -->
+        <div id="modal2" class="modal" >
+
+            <div class="modal-content" id="corModal" style="background-color: #81c784">
+                <h5 id="tituloModal" >Receitas</h5>
+            </div>
+
+            <div class="row">
+
+                <form class="col s6 " id="formAddReceita" asp-controller="Receita" asp-action="AdicionaReceita" method="post">
+
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <!-- <p>Digite um Valor:</p> -->
+                            <input id="valor" type="text" class="validate" name="valor">
+                            <label class="active" for="valor">Valor:</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="descricao" type="text" class="validate" name="descricaoReceita">
+                            <label for="descricao">Descrição:</label>
                         </div>
                     </div>
 
                     <div class="row" id="divDataPicker">
                         <input type="text" class="datepicker" id="dtReceita" value="" name="dataReceita">
                     </div>
-                    <select id="TiposReceitas" name="idTipoReceita">
+                    <select id="TiposReceitas" name="idTipoReceita" for="TiposReceitas">
                         @{TipoReceitaModel objTipoReceita = new TipoReceitaModel(); }
 
                         @foreach (var item in (objTipoReceita.retornaReceitas(id)))
@@ -222,6 +280,11 @@
             </div>
 
         </div>
+
+
+
+        
+
 
         <div class="container body-content">
             @RenderBody()

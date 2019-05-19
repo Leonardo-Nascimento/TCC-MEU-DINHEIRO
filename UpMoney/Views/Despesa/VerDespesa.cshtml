@@ -2,25 +2,24 @@
 
 @{
     var id = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-    List<ReceitasModel> Receitas;
+    List<DespesasModel> Despesas;
 }
 
 @{
-    ViewData["Title"] = "Receitas";
+    ViewData["Title"] = "Despesas";
     Layout = "~/Views/Shared/Layout2.cshtml";
 }
 
 
-@model ReceitasModel
-
-@{ if ((List<ReceitasModel>)ViewBag.ListaReceitas == null)
+@model DespesasModel
+@{ if ((List<DespesasModel>)ViewBag.ListaDespesas == null)
     {
-        <h3 style="font-family: 'Merienda One', cursive; color:orangered">Você não possue Receitas para serem exibidas!</h3>
+        <h3 style="font-family: 'Merienda One', cursive; color:orangered">Você não possue Despesas para serem exibidas!</h3>
     }
     else
     {
 
-        <h3 style="font-family: 'Merienda One', cursive; color:#21a721">Receitas</h3>
+        <h3 style="font-family: 'Merienda One', cursive; color:#e53935">Despesas</h3>
 
         <body>
 
@@ -73,21 +72,21 @@
 
 
                         @{
+                            decimal totalDespesas = 0;
 
-                            decimal totalReceitas = 0;
-                            foreach (var item in (List<ReceitasModel>)ViewBag.ListaReceitas)
+                            foreach (var item in (List<DespesasModel>)ViewBag.ListaDespesas)
                             {
-                                totalReceitas = item.totalReceita;
+                                totalDespesas = item.totalDespesa;
                                 <tbody id="lista">
-                                    <tr data-id=@item.idTipoReceita data-valor=@item.valor data-descricao="@item.descricaoReceita" data-dtReceita="@item.dataReceita" data-idTipoReceita="@item.idTipoReceita" data-descricaoTipoReceita="@item.descricaoTipoReceita" data-idReceita="@item.idReceita">
-                                        <td value=@item.idReceita hidden></td>
-                                        <td>@item.dataReceita</td>
-                                        <td>@item.descricaoReceita</td>
-                                        <td>@item.descricaoTipoReceita</td>
-                                        <td style="color:#21a721">@item.valor</td>
+                                    <tr data-id=@item.idTipoDespesa data-valor=@item.valor data-descricao="@item.descricaoDespesa" data-dtDespesa="@item.dataDespesa" data-idTipoDespesa="@item.idTipoDespesa" data-descricaoTipoDespesa="@item.descricaoTipoDespesa" data-idDespesa="@item.idDespesa">
+                                        <td value=@item.idDespesa hidden></td>
+                                        <td>@item.dataDespesa</td>
+                                        <td>@item.descricaoDespesa</td>
+                                        <td>@item.descricaoTipoDespesa</td>
+                                        <td style="color:#e53935">@item.valor</td>
                                         <td>@item.nomeConta</td>
                                         <td>@item.tipoConta</td>
-                                        <td> <a href="#" onclick="ExcluirRceita(@item.idReceita)"> <i class="material-icons" style="color: red" title="Deletar">delete</i> </a>  <a href="#modalEdit" onclick="carregarTipoReceita('tipoReceitaEditar');" class="modal-trigger" data-bteditar> <i class="material-icons" title="Editar">edit</i> </a></td>
+                                        <td> <a href="#" onclick="ExcluirDespesa(@item.idDespesa)"> <i class="material-icons" style="color: red" title="Deletar">delete</i> </a>  <a href="#modalEdit" onclick="carregarTipoDespesa('tipoDespesaEditar');" class="modal-trigger" data-bteditar> <i class="material-icons" title="Editar">edit</i> </a></td>
                                     </tr>
                                 </tbody>
                             }
@@ -99,21 +98,20 @@
                 </div>
 
                 @{
-
-                    if (totalReceitas > 0)
+                    if (@totalDespesas > 0)
                     {
 
-                        <div id="grid" class="totalReceita">
+                        <div id="grid" class="totalDespesa">
                             <table class="centered" id="grid">
                                 <thead>
                                     <tr>
-                                        <th id="TotalReceita" style="color:#21a721">Total</th>
+                                        <th id="TotalDespesa" style="color:#e53935">Total</th>
                                         <th></th>
                                         <th></th>
                                         <th></th>
                                         <th></th>
                                         <th></th>
-                                        <th id="TotalReceita" style="color:#21a721">@totalReceitas</th>
+                                        <th id="TotalDespesa" style="color:#e53935">@totalDespesas</th>
                                         <th></th>
                                         <th></th>
                                         <th></th>
@@ -125,8 +123,7 @@
                         </div>
 
                     }
-               }
-
+                }
 
 
 
@@ -137,16 +134,16 @@
                 <!-- Modal Structure -->
                 <div id="modalEdit" class="modal">
 
-                    <div class="modal-content" style="background-color: #81c784">
+                    <div class="modal-content" style="background-color: #ef5350">
                         <h5>Entradas</h5>
                     </div>
 
                     <div class="row">
 
-                        <form class="col s6 " id="formAddReceita" asp-controller="Receita" asp-action="EditarReceita" method="post">
+                        <form class="col s6 " id="formAddDespesa" asp-controller="Despesa" asp-action="EditarDespesa" method="post">
 
                             <div class="row">
-                                <input id="idReceitaFormEditar" type="number" value="" name="idReceita" hidden>
+                                <input id="idDespesaFormEditar" type="number" value="" name="idDespesa" hidden>
                                 <div class="input-field col s6">
                                     <!-- <p>Digite um Valor:</p> -->
                                     <input id="valorEditar" type="text" class="validate" name="valor">
@@ -157,22 +154,22 @@
 
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="descricaoEditar" type="text" class="validate" name="descricaoReceita">
+                                    <input id="descricaoEditar" type="text" class="validate" name="descricaoDespesa">
                                     <label class="active" for="descricaoEditar">Descrição:</label>
                                 </div>
                             </div>
 
                             <div class="row" id="divDataPicker">
-                                <input class="active" type="text" class="datepicker" id="dtReceitaEditar" name="dataReceita">
+                                <input class="active" type="text" class="datepicker" id="dtDespesaEditar" name="dataDespesa">
                             </div>
 
-                            <select id="tipoReceitaEditar" name="idTipoReceita" onload="SelectTipoReceita()">
-                                @{TipoReceitaModel objTipoReceita = new TipoReceitaModel(); }
+                            <select id="tipoDespesaEditar" name="idTipoDespesa" onload="SelectTipoDespesa()">
+                                @{TipoDespesaModel objTipoDespesa = new TipoDespesaModel(); }
 
-                                @foreach (var item in (objTipoReceita.retornaReceitas(id)))
+                                @foreach (var item in (objTipoDespesa.retornaDespesas(id)))
                                 {
-                                    //item.idTipoReceita ==
-                                    <option value=@item.idTipoReceita.ToString() id="@item.dsTipoReceita.ToString()">@item.dsTipoReceita.ToString()</option>
+                                    //item.idTipoDespesa ==
+                                    <option value=@item.idTipoDespesa.ToString() id="@item.dsTipoDespesa.ToString()">@item.dsTipoDespesa.ToString()</option>
                                 }
                             </select>
 
@@ -194,6 +191,5 @@
 
 
         </body>
-
-        }
     }
+}

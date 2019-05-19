@@ -58,12 +58,12 @@ using UpMoney.Models;
             WriteLiteral("\r\n<title>Login</title>\r\n\r\n");
             EndContext();
             BeginContext(26, 1946, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f9a6e730a9b544b89f73c1f0828819e6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7faaf8c203d34fceb165713a8c17d024", async() => {
                 BeginContext(32, 223, true);
                 WriteLiteral("\r\n\r\n    <div class=\"section\"></div>\r\n    <main>\r\n        <center>\r\n\r\n            <div class=\"container\">\r\n\r\n                <div class=\"z-depth-1 grey lighten-4 row\" id=\"form-login\">\r\n               \r\n\r\n                    ");
                 EndContext();
                 BeginContext(255, 1283, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "46c637209f6a4cbdb70207c6ac8b0b89", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7c868b68d8c44b43a26cdce73a8db564", async() => {
                     BeginContext(328, 1203, true);
                     WriteLiteral(@"
 

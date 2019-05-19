@@ -129,3 +129,49 @@ function ExcluirRceita(numero){
 
 }
 
+function ExcluirDespesa(numero){
+  var url = window.location.origin + "/Despesa/ExcluirDespesa/" + numero;
+  window.location.href = url;
+
+}
+
+
+
+
+function mudaCorModal(cor){
+  //debugger
+  //document.getElementById("tituloModal").innerHTML = "";
+  
+
+  // if(cor === 'Despesa'){    
+
+  // document.getElementById("tituloModal").innerHTML = ""+"Despesas";  
+  // document.getElementById("corModal").style.backgroundColor = "#e53935";    
+  // document.getElementById("tituloModal").style.color = "#ffffff";
+  
+  // }
+  // else{  
+  // document.getElementById("tituloModal").innerHTML = ""+"Receitas";
+  // document.getElementById("corModal").style.backgroundColor = "#81c784";    
+  // document.getElementById("tituloModal").style.color = "#ffffff";
+  // }
+
+  // document.addEventListener('DOMContentLoaded', function() {
+  // var elems = document.querySelectorAll('.modal2');
+  // var elems1 = document.querySelectorAll('.modal1');
+  // var instances = M.Modal.init(elems,elems1, {});
+
+
+//});
+
+// if(document.getElementById("tituloModal").innerHTML === "Despesas"){
+//   document.getElementById("corModal").style.backgroundColor = "#e53935";
+// }else
+//   //(document.getElementById("tituloModal").innerHTML === "Receitas"){
+//   document.getElementById("corModal").style.backgroundColor = "#81c784";
+
+}
+
+
+
+

@@ -10,6 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Despesa\AdicionaDespesa.cshtml" />
+    <None Include="Views\Despesa\AdicionaTipo.cshtml" />
+    <None Include="Views\Despesa\VerDespesa.cshtml" />
     <None Include="Views\Home\MenuPrincipal.cshtml" />
     <None Include="Views\Shared\Navbar.cshtml" />
   </ItemGroup>
@@ -21,18 +24,6 @@
 
   <ItemGroup>
     <Folder Include="Views\Shared\DisplayTemplates\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="Views\Despesa\AdicionaReceita.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
-    <Content Update="Views\Despesa\AdicionaTipo.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
-    <Content Update="Views\Despesa\VerDespesa.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
   </ItemGroup>
 
 </Project>

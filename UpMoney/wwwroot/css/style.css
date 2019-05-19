@@ -184,11 +184,20 @@ body #filtro {
     width: 97%;
 }
 
+#formAddDespesa {
+    width: 97%;
+}
+
 .dataReceita {
     width: 130px;
 }
 
 #modal2 {
+    width: 25%;
+    height: 70%;
+}
+
+#modal1 {
     width: 25%;
     height: 70%;
 }
@@ -218,6 +227,12 @@ th#TotalReceita{
     font-size: 18px;
 }
 
+th#TotalDespesa{
+    font-size: 18px;
+}
+
+
+
 /*--------------------Modal Editar--------------------------*/
 
 #modalEdit{
@@ -225,29 +240,87 @@ th#TotalReceita{
     height: 70%;
 }
 
-/*-----------------------------------------------------------*/
-#cardReceita{
+/*-------------------------SALDOS TELA INICIAL----------------------------------*/
+
+div#cardSaldos {
+    max-width: fit-content;
     
+}
+
+div#cardTotal{
+    max-width: 278px;   
 }
 
 .card{
     border-radius: 50px;
-    margin-right: 30px;
-    height: 160px;
+    margin-right: 0px;
+    height: 120px;
 }
 
-#cardReceita .card span{
+#cardTotal .card span{
     font-weight: 400;
     font-size: 22px;
 }
 
-#cardReceita .card h1{
-    font-size: 40px;
-    padding-left: 107px;
+
+#cardSaldos .card span{
+    font-weight: 400;
+    font-size: 22px;
 }
+
+
+#cardTotal .card span{
+    font-weight: 400;
+    font-size: 22px;
+}
+
+
+#cardSaldos .card h1{
+    margin-top: 8px;
+    font-size: 30px;
+    
+}
+
+#cardTotal .card h1{
+    margin-top: 8px;
+    font-size: 30px;
+    
+}
+
 
 h5#nomeVisitante{
     margin-left: 700px;
     
     padding-left: 67px;
+}
+
+div#cards {
+    background-color: #cfd8dc;
+    max-width: 501px;
+    
+}
+
+#tableSaldos{
+    border-collapse:unset;
+    margin-top: -55px;
+}
+
+ul#iconsSuspensos {
+    margin-top: -206px;
+    
+}
+
+/*---------------CADASTRO DE RECEITAS SUCESSO-------------------*/
+div#modalOK {
+    width: 20%;
+}
+
+element.style {
+}
+img.responsive-img{
+    padding-left: 24%;
+}
+
+.modal-footer {
+    margin-top: -15%;
 }
