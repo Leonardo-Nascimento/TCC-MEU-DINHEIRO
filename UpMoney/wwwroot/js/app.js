@@ -54,37 +54,35 @@ btnReceita.forEach(el => el.addEventListener("click", () => {
 
 
 function getDetalhes(element) {
-  
+  debugger    
   var tr = element.parentNode.parentNode;
-  var textoOpcao = "";
-  var idOpcao;
+  var textoOpcao = "";  
+  var tipo = tr.getAttribute("data-tipo");
 
   document.getElementById('valorEditar').value = tr.getAttribute("data-valor");
   document.getElementById('descricaoEditar').value = tr.getAttribute("data-descricao");
-  document.getElementById('dtReceitaEditar').value = tr.getAttribute("data-dtReceita");
-  debugger    
-  document.getElementById('idReceitaFormEditar').value = tr.getAttribute("data-idReceita");    
-  
+  if (tipo === "RECEITA"){
+    document.getElementById('dtReceitaEditar').value = tr.getAttribute("data-dtReceita");
+    document.getElementById('idReceitaFormEditar').value = tr.getAttribute("data-idReceita");
+  }else{
+    document.getElementById('dtDespesaEditar').value = tr.getAttribute("data-dtDespesa");
+    document.getElementById('idDespesaFormEditar').value = tr.getAttribute("data-idDespesa");
+
+  } 
   
   textoOpcao = tr.getAttribute("data-descricaoTipoReceita");
-  idOpcao = tr.getAttribute("data-idtiporeceita");
-
-
-
+  
   const selectedCategory = document.querySelector('#tipoReceitaEditar');
-  debugger
+  
   const materializeSelectedCategory = M.FormSelect.init(selectedCategory);
 
 
-  selectedCategory.value = idOpcao;
   if(typeof(Event) === 'function') {
       var event = new Event('change');
   }else{
       var event = document.createEvent('Event');
       event.initEvent('change', true, true);
   }
-  selectedCategory.dispatchEvent(event);
-  
 
     }
   }
