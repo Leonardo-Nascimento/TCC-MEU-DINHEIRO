@@ -193,3 +193,6 @@ D:\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\UpMoney.Views.pdb
 D:\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\UpMoney.dll
 D:\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\UpMoney.pdb
 D:\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\UpMoney.csproj.CopyComplete
+D:\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\Razor\Views\Despesa\AdicionaDespesa.g.cshtml.cs
+D:\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\Razor\Views\Despesa\AdicionaTipo.g.cshtml.cs
+D:\TCC-MEU-DINHEIRO\UpMoney\obj\Debug\netcoreapp2.1\Razor\Views\Despesa\VerDespesa.g.cshtml.cs
