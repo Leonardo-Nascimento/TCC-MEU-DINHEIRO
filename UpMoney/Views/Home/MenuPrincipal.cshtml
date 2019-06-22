@@ -126,7 +126,7 @@
 
                             @{
 
-                                if (@ViewData["TotalDespesas"] != null && @ViewData["TotalReceitas"] != null)
+                                if ((@ViewData["TotalDespesas"] != null && @ViewData["TotalDespesas"] != string.Empty)  && (@ViewData["TotalReceitas"] != null && @ViewData["TotalReceitas"] != string.Empty))
                                 {
                                     var despesas = int.Parse(ViewData["TotalDespesas"].ToString());
                                     var receitas = int.Parse(ViewData["TotalReceitas"].ToString());
@@ -165,7 +165,7 @@
                                     <div class="card-content white-text">
 
                                         @{
-                                            if (@ViewData["TotalReceitas"] != null)
+                                            if (@ViewData["TotalReceitas"] != null && @ViewData["TotalReceitas"] != string.Empty)
                                             {
                                                 var total = @ViewData["TotalReceitas"].ToString();
                                                 <span class="card-title ">Saldo Total Receitas.</span>
@@ -200,7 +200,7 @@
                                         @{
 
 
-                                            if (@ViewData["TotalDespesas"] != null)
+                                            if (@ViewData["TotalDespesas"] != null && @ViewData["TotalDespesas"] != string.Empty)
                                             {
                                                 var total = @ViewData["TotalDespesas"].ToString();
                                                 <span class="card-title ">Saldo Total Despesas. </span>
@@ -238,7 +238,7 @@
 
                                         @{
 
-                                            if (@ViewData["TotalDespesas"] != null && @ViewData["TotalReceitas"] != null)
+                                            if ((@ViewData["TotalDespesas"] != null && @ViewData["TotalDespesas"] != string.Empty) && (@ViewData["TotalReceitas"] != null && @ViewData["TotalReceitas"] != string.Empty))
                                             {
                                                 var despesas = int.Parse(ViewData["TotalDespesas"].ToString());
                                                 var receitas = int.Parse(ViewData["TotalReceitas"].ToString());
@@ -247,7 +247,7 @@
                                             }
                                             else
                                             {
-                                                <span class="card-title "> Você não possui saldo de Despesas!</span>
+                                                <span class="card-title "> Você não possui saldo!</span>
                                             }
 
                                         }

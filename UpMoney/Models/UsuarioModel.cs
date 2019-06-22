@@ -27,7 +27,28 @@ namespace UpMoney.Models
         //string Email = "leo@gmail.com";
         //string password = "1234";
 
-      
+        void criaTipoContaUsuario(int id)
+        {
+            try
+            {
+                DataTable dt = null;
+                DAL objDAL = new DAL();                
+
+                string sql1 = $"select* from Conta where IDCLIENTE = '{id}' ";                
+                dt = objDAL.RetDataTable(sql1);
+              
+                if (dt.Rows.Count == 0)
+                {
+                    string sql2 = $"INSERT INTO Conta(idCliente,NomeConta,TipoConta)VALUES('{id}','Carteira','Pessoal')";
+                    objDAL.ExecutaComandoSQL(sql2);
+                }
+                                
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
         public bool ValidarLogin()
         {
@@ -46,7 +67,9 @@ namespace UpMoney.Models
                 if (dt.Rows.Count == 1)
                 {
                     Id = int.Parse(dt.Rows[0]["IDCLIENTE"].ToString());
-                    Nome = dt.Rows[0]["NOME"].ToString();                    
+                    Nome = dt.Rows[0]["NOME"].ToString();
+
+                    criaTipoContaUsuario(Id);
                     return true;
                 }
 
@@ -54,6 +77,8 @@ namespace UpMoney.Models
 
             return false;
         }
+
+ 
 
         public bool RegistrarUsuario()
         {
@@ -76,10 +101,13 @@ namespace UpMoney.Models
             else
                 return false; 
                 
-                
+
+
+
+
 
             //string dataNascimento = DateTime.Parse(Data_Nascimento).ToString("yyyy/MM/dd");
- 
+
 
 
         }

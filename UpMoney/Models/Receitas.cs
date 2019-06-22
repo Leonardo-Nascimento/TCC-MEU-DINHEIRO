@@ -56,7 +56,7 @@ namespace UpMoney.Models
         public string TotalRceitas(string idUsuario)
         {
             string id_usuarioLogado = idUsuario;
-            string sql = $" SELECT cm.idReceita,CONVERT(VARCHAR, r.[Data], 103) AS DATA,(SELECT SUM(Receitas.ValorReceita) FROM Receitas ) AS Total,r.DsReceita,tr.DsTipoReceita,tr.IdTipoReceita ,r.ValorReceita,c.NomeConta,c.TipoConta " +
+            string sql = $" SELECT cm.idReceita,CONVERT(VARCHAR, r.[Data], 103) AS DATA,(SELECT SUM(Receitas.ValorReceita) FROM Receitas WHERE idClienteReceita = {id_usuarioLogado}) AS Total,r.DsReceita,tr.DsTipoReceita,tr.IdTipoReceita ,r.ValorReceita,c.NomeConta,c.TipoConta " +
                          " FROM Cliente_Movimentacao AS cm " +
                          " join Receitas AS r " +
                          " on cm.idReceita = r.idReceita" +
@@ -121,7 +121,7 @@ namespace UpMoney.Models
 
             
             string id_usuarioLogado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-            string sql = $" SELECT cm.idReceita,CONVERT(VARCHAR, r.[Data], 103) AS DATA,(SELECT SUM(Receitas.ValorReceita) FROM Receitas ) AS Total,r.DsReceita,tr.DsTipoReceita,tr.IdTipoReceita ,r.ValorReceita,c.NomeConta,c.TipoConta " +
+            string sql = $" SELECT cm.idReceita,CONVERT(VARCHAR, r.[Data], 103) AS DATA,(SELECT SUM(Receitas.ValorReceita) FROM Receitas WHERE idClienteReceita = {id_usuarioLogado}) AS Total,r.DsReceita,tr.DsTipoReceita,tr.IdTipoReceita ,r.ValorReceita,c.NomeConta,c.TipoConta " +
                          " FROM Cliente_Movimentacao AS cm " +
                          " join Receitas AS r " +
                          " on cm.idReceita = r.idReceita" +

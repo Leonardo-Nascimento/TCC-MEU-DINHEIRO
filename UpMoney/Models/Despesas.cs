@@ -56,7 +56,7 @@ namespace UpMoney.Models
         public string TotalDespesas(string idUsuario)
         {
             string id_usuarioLogado = idUsuario;
-            string sql = $" SELECT cm.idDespesa,CONVERT(VARCHAR, d.[Data], 103) AS DATA,(SELECT SUM(Despesas.ValorDespesa) FROM Despesas ) AS Total,d.DsDespesa,td.DsTipoDespesa,td.IdTipoDespesa ,d.ValorDespesa,c.NomeConta,c.TipoConta " +
+            string sql = $" SELECT cm.idDespesa,CONVERT(VARCHAR, d.[Data], 103) AS DATA,(SELECT SUM(Despesas.ValorDespesa) FROM Despesas WHERE idClienteDespesa = {id_usuarioLogado}) AS Total,d.DsDespesa,td.DsTipoDespesa,td.IdTipoDespesa ,d.ValorDespesa,c.NomeConta,c.TipoConta " +
                          " FROM Cliente_Movimentacao AS cm " +
                          " join Despesas AS d " +
                          " on cm.idDespesa = d.idDespesa" +
@@ -122,7 +122,7 @@ namespace UpMoney.Models
 
 
             string id_usuarioLogado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-            string sql = $" SELECT cm.idDespesa,CONVERT(VARCHAR, r.[Data], 103) AS DATA,(SELECT SUM(Despesas.ValorDespesa) FROM Despesas ) AS Total,r.DsDespesa,tr.DsTipoDespesa,tr.IdTipoDespesa ,r.ValorDespesa,c.NomeConta,c.TipoConta " +
+            string sql = $" SELECT cm.idDespesa,CONVERT(VARCHAR, r.[Data], 103) AS DATA,(SELECT SUM(Despesas.ValorDespesa) FROM Despesas WHERE idClienteDespesa = {id_usuarioLogado}) AS Total,r.DsDespesa,tr.DsTipoDespesa,tr.IdTipoDespesa ,r.ValorDespesa,c.NomeConta,c.TipoConta " +
                          " FROM Cliente_Movimentacao AS cm " +
                          " join Despesas AS r " +
                          " on cm.idDespesa = r.idDespesa" +

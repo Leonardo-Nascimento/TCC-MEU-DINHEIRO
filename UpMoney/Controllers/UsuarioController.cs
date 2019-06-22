@@ -33,7 +33,7 @@ namespace UpMoney.Controllers
 
             if (cadUsuario)
             {                
-                return RedirectToAction("MenuPrincipal", "Home");
+                return RedirectToAction("Login", "Usuario");
             }
             else
                 return RedirectToAction("LoginErro");

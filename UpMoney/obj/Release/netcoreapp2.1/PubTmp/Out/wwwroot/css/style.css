@@ -37,14 +37,14 @@
     position: relative;
     opacity: 0.95;
     margin-top: 20px;
-    margin-left: -89px !important;  
+    margin-left: -89px !important;
 }
 
 
-#responsive-img{
+#responsive-img {
     height: 50%;
     margin-top: 160px;
-    width:100px;
+    width: 100px;
 }
 
 div#titulo-banner.container {
@@ -55,8 +55,8 @@ div#titulo-banner.container {
 #titulo-banner {
     opacity: 0.45;
     width: 100%;
-    background-color:#080808db;
-    text-align:center;
+    background-color: #080808db;
+    text-align: center;
 }
 
 
@@ -77,7 +77,7 @@ div#titulo-banner.container {
     margin-top: 2rem;
 }
 
-body{
+body {
     background-color: #e0e0e0;
     display: flex;
     min-height: 100vh;
@@ -87,23 +87,23 @@ body{
     width: 100%;
 }
 
-  main {
+main {
     flex: 1 0 auto;
-  }
+}
 
-  .logo-login {
+.logo-login {
     width: 66px;
     height: 61px;
     margin-left: 85px;
     /* align-items: center; */
     margin-top: -25px;
     margin-bottom: 8px;
-  }
+}
 
 /*----------Menu Principal------------*/
 
-.navbar2 {   
-    width: 100%;    
+.navbar2 {
+    width: 100%;
     border-radius: 50px;
     margin-top: 5px;
     height: 47px;
@@ -123,45 +123,44 @@ ul#dropdown1 {
     z-index: 1000;
 }
 
-  .navbar2 ul a:hover{
+.navbar2 ul a:hover {
     color: #fff;
-  }
+}
 
-  .menuFixo ul{    
-    top: 65px;  
-    width: unset;  
-  }
+.menuFixo ul {
+    top: 65px;
+    width: unset;
+}
 
 
-  #dropdown1{
-    top:100px !important;
+#dropdown1 {
+    top: 100px !important;
     margin-left: 0px;
     margin-top: 60px;
-  }
-  
-  .collapsible-header #btnSair{
+}
+
+.collapsible-header #btnSair {
     margin-left: 46px;
-    color:sienna;
-  }
+    color: sienna;
+}
 
-  /*----------Tabela de Receitas e Despesas------------*/
+/*----------Tabela de Receitas e Despesas------------*/
 
-  #grid{
+#grid {
     background-color: white;
+}
 
-  }
-
-  body #filtro{
+body #filtro {
     width: 141px;
-  }
+}
 
-  body #filtro ul{
-    top:40px !important;
-  }
+    body #filtro ul {
+        top: 40px !important;
+    }
 
-  #filtro ul li span{
+#filtro ul li span {
     font-size: 14px !important;
-  }
+}
 
 #intervaloData {
     margin-left: 200px;
@@ -169,11 +168,157 @@ ul#dropdown1 {
     width: 220px;
 }
 
-  #intervaloData table {
+    #intervaloData table {
         border-collapse: inherit;
         text-align: center;
-  }
-
-    #intervaloData table tbody td {
-        
     }
+
+
+
+#valor_inline input[type=text]:focus {
+    box-shadow: 0 1px 0 0 #000;
+}
+
+#formAddReceita {
+    width: 97%;
+}
+
+#formAddDespesa {
+    width: 97%;
+}
+
+.dataReceita {
+    width: 130px;
+}
+
+#modal2 {
+    width: 25%;
+    height: 70%;
+}
+
+#modal1 {
+    width: 25%;
+    height: 70%;
+}
+
+.opcoesBtn {
+    margin-top: 21px;
+    margin-left: 21%;
+}
+
+.datepicker-date-display {
+    display: none;
+}
+
+#btnSalvar {
+    margin-right: 20px;
+}
+
+#divDataPicker .modal {
+    width: 90%;
+}
+
+.totalReceita{
+    margin-top: 4px;
+}
+
+th#TotalReceita{
+    font-size: 18px;
+}
+
+th#TotalDespesa{
+    font-size: 18px;
+}
+
+
+
+/*--------------------Modal Editar--------------------------*/
+
+#modalEdit{
+    width: 25%;
+    height: 70%;
+}
+
+/*-------------------------SALDOS TELA INICIAL----------------------------------*/
+
+div#cardSaldos {
+    max-width: fit-content;
+    
+}
+
+div#cardTotal{
+    max-width: 278px;   
+}
+
+.card{
+    border-radius: 50px;
+    margin-right: 0px;
+    height: 120px;
+}
+
+#cardTotal .card span{
+    font-weight: 400;
+    font-size: 22px;
+}
+
+
+#cardSaldos .card span{
+    font-weight: 400;
+    font-size: 22px;
+}
+
+
+#cardTotal .card span{
+    font-weight: 400;
+    font-size: 22px;
+}
+
+
+#cardSaldos .card h1{
+    margin-top: 8px;
+    font-size: 30px;
+    
+}
+
+#cardTotal .card h1{
+    margin-top: 8px;
+    font-size: 30px;
+    
+}
+
+
+h5#nomeVisitante{
+    margin-left: 700px;
+    
+    padding-left: 67px;
+}
+
+div#cards {
+    background-color: #cfd8dc;
+    max-width: 501px;
+    
+}
+
+#tableSaldos{
+    border-collapse:unset;
+    margin-top: -55px;
+}
+
+ul#iconsSuspensos {
+    margin-top: -206px;
+    
+}
+
+/*---------------CADASTRO DE RECEITAS SUCESSO-------------------*/
+div#modalOK {
+    width: 20%;
+}
+
+
+img.responsive-img{
+    padding-left: 24%;
+}
+
+.modal-footer {
+    margin-top: -15%;
+}
